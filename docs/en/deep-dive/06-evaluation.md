@@ -11,7 +11,7 @@
 > [!NOTE]
 > **Reading guide**
 > - **Audience**: deep-dive track / reviewers.
-> - **Data sources**: contract tests [`contracts/TEST_RESULT.md`](../../../tlsn-extension/packages/contracts/TEST_RESULT.md); experimental data [`data_analysis/`](../../../data_analysis/) (`*.csv` sources, `*.svg` charts).
+> - **Data sources**: contract tests [`contracts/TEST_RESULT.md`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/TEST_RESULT.md); experimental data [`data_analysis/`](../../../data_analysis/) (`*.csv` sources, `*.svg` charts).
 > - **Recomputation principle**: every number here is recomputed live from the source data (CSV / test output / contract constants).
 
 **Contents**: [Contract correctness](#1-contract-functional-correctness) · [Gas & economics](#2-on-chain-gas--economics) · [TLSNotary performance](#3-tlsnotary-protocol-performance) · [End-to-end latency](#4-end-to-end-business-latency) · [Limitations](#5-limitations-thesis-ch65)
@@ -22,7 +22,7 @@
 
 `npx hardhat test` (Hardhat 3.1 + Node test runner), Solidity 0.8.28, EVM cancun. Each case runs in an isolated EVM snapshot, fully isolated between cases.
 
-**Result: a local live run (WSL `hardhat test`) gives 336 passing / 0 failing, all pass** (node:test count, including 7 helper module files, ~329 business cases). The per-suite breakdown below is taken from the [TEST_RESULT.md](../../../tlsn-extension/packages/contracts/TEST_RESULT.md) archive.
+**Result: a local live run (WSL `hardhat test`) gives 336 passing / 0 failing, all pass** (node:test count, including 7 helper module files, ~329 business cases). The per-suite breakdown below is taken from the [TEST_RESULT.md](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/TEST_RESULT.md) archive.
 
 | Suite | Cases | Suite | Cases |
 |---|---:|---|---:|
@@ -53,7 +53,7 @@ $$\text{Total fee (USD)} = \text{Gas Used} \times \text{Gas Price (gwei)} \times
 
 ### 2.2 Per-operation gas baselines (measured)
 
-From [TEST_RESULT.md](../../../tlsn-extension/packages/contracts/TEST_RESULT.md) and thesis Table 6-2 (consistent):
+From [TEST_RESULT.md](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/TEST_RESULT.md) and thesis Table 6-2 (consistent):
 
 | Operation | Gas |
 |---|---:|
@@ -163,7 +163,7 @@ The concurrent dual Prover shares a single Comlink Worker + a single Rayon WASM 
 | # | Limitation | Description | Code link |
 |---|---|---|---|
 | 1 | Notary availability single point | A single-node verifier; failure interrupts proof generation; this availability single point is decoupled from on-chain asset security; $m\text{-of-}n$ threshold signing can distribute it | `trustedVerifiers` single signer address |
-| 2 | Account-identifier enumeration surface | Account commitments are currently **unsalted** keccak256; a known candidate set can be enumerated for matches | `setPlatformBinding` ([C2CAdmin.sol:264](../../../tlsn-extension/packages/contracts/contracts/C2CAdmin.sol#L264)) |
+| 2 | Account-identifier enumeration surface | Account commitments are currently **unsalted** keccak256; a known candidate set can be enumerated for matches | `setPlatformBinding` ([C2CAdmin.sol:264](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CAdmin.sol#L264)) |
 | 3 | No transaction-amount privacy | The order amount is on-chain in plaintext and can be statistically analyzed; needs Pedersen + range proofs | `Order.amount` in plaintext |
 | 4 | Cost of adapting to platform API changes | An API change needs two-layer adaptation (plugin + on-chain verifier); the latter goes through governance, with a response lag | `platforms/*.sol` |
 | 5 | Notary–buyer collusion boundary | T3 modeled as "honest-but-curious"; pure collusion fails if either T2/T3 holds; side-channel vulnerabilities + bondBps parameter sensitivity are residual risks | see [05-security-analysis.md](05-security-analysis.md) |

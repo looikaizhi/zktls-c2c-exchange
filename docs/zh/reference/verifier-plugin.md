@@ -19,7 +19,7 @@
 
 ## 1. 平台验证器接口抽象
 
-所有支付平台验证器实现统一接口 [`IPlatformVerifier`](../../../tlsn-extension/packages/contracts/contracts/interfaces/IPlatformVerifier.sol)：
+所有支付平台验证器实现统一接口 [`IPlatformVerifier`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/interfaces/IPlatformVerifier.sol)：
 
 ```solidity
 function verifyBuyerPayment(bytes proofsData, bytes paramsData) external returns (bytes32 txId);
@@ -27,10 +27,10 @@ function verifyMerchantSent(bytes proofsData, bytes paramsData) external returns
 ```
 
 - `proofsData` = `abi.encode(TLSNProof[])`，证明条数由平台决定（支付宝 1 条、Wise 2 条）。
-- `paramsData` = `abi.encode(uint256 fiatAmountX1000, string targetCurrency, uint256 orderDeadline, uint256 orderCreationTime)` —— **4 字段**（[IPlatformVerifier.sol:10-18](../../../tlsn-extension/packages/contracts/contracts/interfaces/IPlatformVerifier.sol#L10-L18)）。其中 `orderCreationTime` 使支付时间须落在 `[创建, 截止]` 区间，防止旧/过期转账被复用。
+- `paramsData` = `abi.encode(uint256 fiatAmountX1000, string targetCurrency, uint256 orderDeadline, uint256 orderCreationTime)` —— **4 字段**（[IPlatformVerifier.sol:10-18](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/interfaces/IPlatformVerifier.sol#L10-L18)）。其中 `orderCreationTime` 使支付时间须落在 `[创建, 截止]` 区间，防止旧/过期转账被复用。
 - `TLSNVerifier` 在调用平台验证器**之前**已完成所有密码学核验（chainId、会话去重、承诺校验、验证器签名）；平台验证器只做**业务规则匹配**。
 
-**统一委托入口** [`TLSNVerifier.verifyAndDelegate`](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L196-L223)：
+**统一委托入口** [`TLSNVerifier.verifyAndDelegate`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L196-L223)：
 
 ```
 verifyAndDelegate(platformId, isMerchantSent, proofs, paramsData)
@@ -47,9 +47,9 @@ verifyAndDelegate(platformId, isMerchantSent, proofs, paramsData)
 
 ### 2.1 支付宝（单证明）
 
-源码：[`platforms/AlipayPlatformVerifier.sol`](../../../tlsn-extension/packages/contracts/contracts/platforms/AlipayPlatformVerifier.sol)
+源码：[`platforms/AlipayPlatformVerifier.sol`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/platforms/AlipayPlatformVerifier.sol)
 
-`proofs[0]` = 支付宝订单 API 证明。链上校验（[:81-148](../../../tlsn-extension/packages/contracts/contracts/platforms/AlipayPlatformVerifier.sol#L81-L148)）：
+`proofs[0]` = 支付宝订单 API 证明。链上校验（[:81-148](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/platforms/AlipayPlatformVerifier.sol#L81-L148)）：
 
 | 字段 | 规则 |
 |---|---|
@@ -60,13 +60,13 @@ verifyAndDelegate(platformId, isMerchantSent, proofs, paramsData)
 | `gmtSuccess` | 经 `TLSNParserLib.parseDatetimeToUnix` 解析，须落在 `[orderCreationTime, orderDeadline]` |
 
 > [!TIP]
-> 链上业务校验只要求 5 个金额/状态/时间字段（[:184-186](../../../tlsn-extension/packages/contracts/contracts/platforms/AlipayPlatformVerifier.sol#L184-L186)）；收款人身份匹配由**验证服务器 accountCheck** 在链下完成（见 §2 末尾说明）。
+> 链上业务校验只要求 5 个金额/状态/时间字段（[:184-186](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/platforms/AlipayPlatformVerifier.sol#L184-L186)）；收款人身份匹配由**验证服务器 accountCheck** 在链下完成（见 §2 末尾说明）。
 
 ### 2.2 Wise（双证明）
 
-源码：[`platforms/WisePlatformVerifier.sol`](../../../tlsn-extension/packages/contracts/contracts/platforms/WisePlatformVerifier.sol)
+源码：[`platforms/WisePlatformVerifier.sol`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/platforms/WisePlatformVerifier.sol)
 
-`proofs[0]` = contacts 证明，`proofs[1]` = transfer 证明。transfer 链上校验（[:128-153](../../../tlsn-extension/packages/contracts/contracts/platforms/WisePlatformVerifier.sol#L128-L153)）：
+`proofs[0]` = contacts 证明，`proofs[1]` = transfer 证明。transfer 链上校验（[:128-153](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/platforms/WisePlatformVerifier.sol#L128-L153)）：
 
 | 字段 | 规则 |
 |---|---|
@@ -77,7 +77,7 @@ verifyAndDelegate(platformId, isMerchantSent, proofs, paramsData)
 | `date`（毫秒） | `/1000` 后须落在 `[orderCreationTime, orderDeadline]` |
 
 > [!TIP]
-> `_verifyContacts`（[:121-123](../../../tlsn-extension/packages/contracts/contracts/platforms/WisePlatformVerifier.sol#L121-L123)）为空函数——contacts 证明在结构上必需（须通过密码学核验且 serverName 受信），其收款人身份内容由验证服务器 accountCheck 在链下核验。
+> `_verifyContacts`（[:121-123](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/platforms/WisePlatformVerifier.sol#L121-L123)）为空函数——contacts 证明在结构上必需（须通过密码学核验且 serverName 受信），其收款人身份内容由验证服务器 accountCheck 在链下核验。
 
 > [!IMPORTANT]
 > **为什么账户校验放在链下**：当前无法在不泄露隐私的前提下于链上验证身份——对整个协议直接套 zk 会显著增加时延与手续费，对各方都不利。因此采用「链下 accountCheck + 验证器对 `orderBindingHash`（含账户哈希）签名」的方案：验证器的签名保证了签名前已核对正确账户。链上的账户校验入口预留给未来完全去中心化阶段（zkTLS 性能达标后可平滑迁移上链）。详见 [03-threat-model.md](../deep-dive/03-threat-model.md)、[05-security-analysis.md](../deep-dive/05-security-analysis.md)。
@@ -88,7 +88,7 @@ verifyAndDelegate(platformId, isMerchantSent, proofs, paramsData)
 
 得益于注册表 + 统一接口，**无需改动任何已部署合约**。四步：
 
-**① 合约侧**：写一个实现 [`IPlatformVerifier`](../../../tlsn-extension/packages/contracts/contracts/interfaces/IPlatformVerifier.sol) 的新合约（参照 `AlipayPlatformVerifier`），自带 `usedXxxIds` 去重 map，部署后调用 admin 函数：
+**① 合约侧**：写一个实现 [`IPlatformVerifier`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/interfaces/IPlatformVerifier.sol) 的新合约（参照 `AlipayPlatformVerifier`），自带 `usedXxxIds` 去重 map，部署后调用 admin 函数：
 
 ```solidity
 tlsnVerifier.setPlatformVerifier(keccak256("yourplatform"), newVerifierAddress);
@@ -97,7 +97,7 @@ tlsnVerifier.addTrustedPaymentServer("api.yourplatform.com");  // 受信支付�
 
 **② 验证服务器侧**：在 `accountCheck` 的揭示范围里加入新平台的收款人身份字段（链下核身份），并按需配置 Webhook（见 §5）。
 
-**③ 前端 adapter**：在 [`web/src/platforms/`](../../../tlsn-extension/packages/web/src/platforms/) 新增一个 `PaymentPlatform` 对象并注册进 [`registry.ts`](../../../tlsn-extension/packages/web/src/platforms/registry.ts#L6) 的 `allPlatforms`。`PaymentPlatform` 形状（[`types.ts:21-35`](../../../tlsn-extension/packages/web/src/platforms/types.ts#L21-L35)）：
+**③ 前端 adapter**：在 [`web/src/platforms/`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/web/src/platforms) 新增一个 `PaymentPlatform` 对象并注册进 [`registry.ts`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/web/src/platforms/registry.ts#L6) 的 `allPlatforms`。`PaymentPlatform` 形状（[`types.ts:21-35`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/web/src/platforms/types.ts#L21-L35)）：
 
 ```ts
 interface PaymentPlatform {
@@ -114,7 +114,7 @@ interface PaymentPlatform {
 > [!NOTE]
 > 📁 前端 adapter 在 `web/src/platforms/`：`registry.ts`/`types.ts`/`wise.ts`/`alipay.ts`。
 
-**④ 插件**：提供取证插件（在浏览器扩展中跑，生成对应平台的 TLS 证明），见 §4 与 [`packages/tutorial`](../../../tlsn-extension/packages/tutorial/)。
+**④ 插件**：提供取证插件（在浏览器扩展中跑，生成对应平台的 TLS 证明），见 §4 与 [`packages/tutorial`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/tutorial)。
 
 > [!TIP]
 > 接入新平台的概念见论文 ch4.4.4；具体函数签名与前端位置以本节为准。
@@ -123,9 +123,9 @@ interface PaymentPlatform {
 
 ## 4. 插件 SDK API
 
-源码：[`packages/plugin-sdk`](../../../tlsn-extension/packages/plugin-sdk/)。插件在 **QuickJS WebAssembly 沙箱**中运行（[`index.ts:455-463`](../../../tlsn-extension/packages/plugin-sdk/src/index.ts#L455-L463)，`allowFetch:false, allowFs:false`，网络与文件系统默认禁用）——这是插件执行隔离的基础（见 [05-security-analysis.md](../deep-dive/05-security-analysis.md)）。
+源码：[`packages/plugin-sdk`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk)。插件在 **QuickJS WebAssembly 沙箱**中运行（[`index.ts:455-463`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk/src/index.ts#L455-L463)，`allowFetch:false, allowFs:false`，网络与文件系统默认禁用）——这是插件执行隔离的基础（见 [05-security-analysis.md](../deep-dive/05-security-analysis.md)）。
 
-**统一 `prove()`**（[`index.ts:668`](../../../tlsn-extension/packages/plugin-sdk/src/index.ts#L668) 注入）：
+**统一 `prove()`**（[`index.ts:668`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk/src/index.ts#L668) 注入）：
 
 ```js
 const proof = await prove(
@@ -143,9 +143,9 @@ const proof = await prove(
 - `action`：`'REVEAL'`（明文）/ `'PEDERSEN'`（承诺）
 - `params`：粒度控制（`type:'json'`、`path`、`hideKey`、`hideValue`）
 
-**类 React Hooks**：`useState`/`setState`、`useEffect`、`useRequests`、`useHeaders`；UI 原语 `div()`/`button()`；能力 `openWindow()`、`done()`。详见 [`index.ts`](../../../tlsn-extension/packages/plugin-sdk/src/index.ts) 与 `CLAUDE.md` Plugin SDK 段。
+**类 React Hooks**：`useState`/`setState`、`useEffect`、`useRequests`、`useHeaders`；UI 原语 `div()`/`button()`；能力 `openWindow()`、`done()`。详见 [`index.ts`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk/src/index.ts) 与 `CLAUDE.md` Plugin SDK 段。
 
-**`policyVersion`**：插件 `config` 可声明 `policyVersion`（[`index.ts:880-884`](../../../tlsn-extension/packages/plugin-sdk/src/index.ts#L880-L884)），它会被 hash 进验证器签名摘要（`policyVersionHash`），把「用哪版披露策略生成的证明」锁进签名（见 [02-zktls-tlsnotary.md](../deep-dive/02-zktls-tlsnotary.md)）。
+**`policyVersion`**：插件 `config` 可声明 `policyVersion`（[`index.ts:880-884`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk/src/index.ts#L880-L884)），它会被 hash 进验证器签名摘要（`policyVersionHash`），把「用哪版披露策略生成的证明」锁进签名（见 [02-zktls-tlsnotary.md](../deep-dive/02-zktls-tlsnotary.md)）。
 
 ---
 
@@ -153,10 +153,10 @@ const proof = await prove(
 
 验证完成后，验证服务器可向外部后端推送一条**精简 Webhook**（fire-and-forget），用于实时合规决策。
 
-- **配置**：`config.yaml` 按 server name 配置，支持 `"*"` 通配回退（[`main.rs:575-579`](../../../tlsn-extension/packages/verifier/src/main.rs#L575-L579)）。
-- **负载**：`SlimWebhookPayload`——**仅含 Travel Rule 合规字段，不含原始转录**（[`main.rs:653-657`](../../../tlsn-extension/packages/verifier/src/main.rs#L653-L657)）。
-- **安全**：可选 HMAC-SHA256 经 `X-TLSN-Signature` 头签名（[`main.rs:542`](../../../tlsn-extension/packages/verifier/src/main.rs#L542)）。
-- **时机**：在验证器签名**之后**触发（[`main.rs:1582,1649-1652`](../../../tlsn-extension/packages/verifier/src/main.rs#L1649-L1652)）。
+- **配置**：`config.yaml` 按 server name 配置，支持 `"*"` 通配回退（[`main.rs:575-579`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L575-L579)）。
+- **负载**：`SlimWebhookPayload`——**仅含 Travel Rule 合规字段，不含原始转录**（[`main.rs:653-657`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L653-L657)）。
+- **安全**：可选 HMAC-SHA256 经 `X-TLSN-Signature` 头签名（[`main.rs:542`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L542)）。
+- **时机**：在验证器签名**之后**触发（[`main.rs:1582,1649-1652`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L1649-L1652)）。
 
 `config.yaml` 示例：
 
@@ -170,7 +170,7 @@ webhooks:
 ```
 
 > [!NOTE]
-> 📍 实现位置：Webhook 投递逻辑位于 [`verifier/src/main.rs`](../../../tlsn-extension/packages/verifier/src/main.rs)（`webhook.rs` 为占位模块）。
+> 📍 实现位置：Webhook 投递逻辑位于 [`verifier/src/main.rs`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs)（`webhook.rs` 为占位模块）。
 
 ---
 

@@ -87,11 +87,11 @@ The standalone Notary role is removed; the business verifier server VS directly 
 ### 5.2 Semantic extension of the signature digest (the core)
 A generic TLSNotary signature covers only the session commitments + metadata, with no cryptographic relation to a business order. **This work additionally includes the order-binding hash `H_bind` and the policy-version hash `H_policy` in the signature digest**, so a single signature endorses both "session content authenticity" and "order parameter consistency," eliminating the room to transplant a proof across orders.
 
-The message used to recover the signer on-chain ([`_recoverVerifierSigner`, TLSNVerifier.sol:272-285](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L272-L285)):
+The message used to recover the signer on-chain ([`_recoverVerifierSigner`, TLSNVerifier.sol:272-285](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L272-L285)):
 
 $$m = \text{keccak256}(\text{chainId} ‖ \text{keccak256}(sid) ‖ H_{comm} ‖ H_{bind} ‖ H_{policy})$$
 
-The preimage built off-chain by the VS is **byte-for-byte identical** to the on-chain one ([`sign_commitments`, verifier/src/main.rs:2064-2111](../../../tlsn-extension/packages/verifier/src/main.rs#L2064-L2111)). `H_policy` is taken from the plugin config's `policyVersion` ([plugin-sdk/src/index.ts:880-884](../../../tlsn-extension/packages/plugin-sdk/src/index.ts#L880-L884)).
+The preimage built off-chain by the VS is **byte-for-byte identical** to the on-chain one ([`sign_commitments`, verifier/src/main.rs:2064-2111](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L2064-L2111)). `H_policy` is taken from the plugin config's `policyVersion` ([plugin-sdk/src/index.ts:880-884](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk/src/index.ts#L880-L884)).
 
 ### 5.3 Standardized selective disclosure
 On-demand disclosure is refined into a field-level declarative spec (Handlers); each field chooses `REVEAL` (plaintext) or `PEDERSEN` (committed/hidden), so the policy is declarable, auditable, and extensible.
@@ -102,10 +102,10 @@ On-demand disclosure is refined into a field-level declarative spec (Handlers); 
 
 | Generic TLSNotary mechanism | This system's instantiation | Code evidence |
 |---|---|---|
-| Commitment function $H$ | EVM-native `keccak256`: $c_i = \text{keccak256}(\text{bytes}(f_i) ‖ r_i)$ | commitment `hashAlg=Keccak256` ([verifier.rs:225-226](../../../tlsn-extension/packages/verifier/src/verifier.rs#L225-L226)) |
-| Commitment aggregation | Sequential keccak concatenation `H_comm = keccak256(c₁‖…‖cₙ)`, for a single on-chain comparison | [`_verifyCommitmentsHash`, TLSNVerifier.sol:264-270](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L264-L270) |
-| Commitment-opening check | Rebuild the commitment from the revealed item's value+blinder and compare | [`_verifyCommitmentOpenings`, TLSNVerifier.sol:246-262](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L246-L262) |
-| Proof structure π | `TLSNProof` (sessionId/chainId/commitments/revealedItems/commitmentOpenings/orderBindingHash/policyVersionHash/verifierSignature/serverName) | [C2CTypes.sol:35-69](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L35-L69) |
+| Commitment function $H$ | EVM-native `keccak256`: $c_i = \text{keccak256}(\text{bytes}(f_i) ‖ r_i)$ | commitment `hashAlg=Keccak256` ([verifier.rs:225-226](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/verifier.rs#L225-L226)) |
+| Commitment aggregation | Sequential keccak concatenation `H_comm = keccak256(c₁‖…‖cₙ)`, for a single on-chain comparison | [`_verifyCommitmentsHash`, TLSNVerifier.sol:264-270](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L264-L270) |
+| Commitment-opening check | Rebuild the commitment from the revealed item's value+blinder and compare | [`_verifyCommitmentOpenings`, TLSNVerifier.sol:246-262](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L246-L262) |
+| Proof structure π | `TLSNProof` (sessionId/chainId/commitments/revealedItems/commitmentOpenings/orderBindingHash/policyVersionHash/verifierSignature/serverName) | [C2CTypes.sol:35-69](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CTypes.sol#L35-L69) |
 
 > [!TIP]
 > Generic TLSNotary often aggregates commitments into a Merkle root; this system instantiates it as **sequential keccak256 concatenation** per ch4.3, to fit a single on-chain comparison on the EVM (code `_verifyCommitmentsHash`).

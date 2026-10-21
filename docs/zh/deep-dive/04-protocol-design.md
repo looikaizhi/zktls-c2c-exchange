@@ -26,10 +26,10 @@
 
 | 层 | 职责 | 代码包 |
 |---|---|---|
-| 链上合约层 | 资产托管、订单状态机、证明核验、风控、保证金 | [`contracts`](../../../tlsn-extension/packages/contracts/) |
-| 链下证明层 | 浏览器扩展（证明器）+ 验证服务器（VS） | [`extension`](../../../tlsn-extension/packages/extension/) + [`verifier`](../../../tlsn-extension/packages/verifier/) + [`plugin-sdk`](../../../tlsn-extension/packages/plugin-sdk/) |
+| 链上合约层 | 资产托管、订单状态机、证明核验、风控、保证金 | [`contracts`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts) |
+| 链下证明层 | 浏览器扩展（证明器）+ 验证服务器（VS） | [`extension`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/extension) + [`verifier`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier) + [`plugin-sdk`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk) |
 | 支付平台对接层 | 第三方支付 HTTPS 接口（支付宝/Wise），无需改造 | — |
-| 前端交互层 | 买方/商家 Web 界面，不持私钥 | [`web`](../../../tlsn-extension/packages/web/) |
+| 前端交互层 | 买方/商家 Web 界面，不持私钥 | [`web`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/web) |
 
 链上与链下的**唯一耦合点** = 证明提交接口 + 事件订阅通道。详细包职责见 [code-map.md](../reference/code-map.md)。
 
@@ -45,9 +45,9 @@
 | 付款举证方 | **买方**（付法币 + 生成证明） | **商家**（付法币 + 生成证明） |
 | 保证金来源 | 买方下单时存入 bond | 商家 bond 从 collateral 划出 |
 | 订单初态 | `PENDING` | `WAITING` |
-| 结算函数 | [`payOrderByPlatform`](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L609) | [`receiveCryptoWithPlatformPayment`](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L670) |
+| 结算函数 | [`payOrderByPlatform`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L609) | [`receiveCryptoWithPlatformPayment`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L670) |
 
-代码中 `placeOrder` 的两分支即此镜像：CRYPTO 买方缴 bond（[C2CEscrow.sol:503-528](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L503-L528)），FIAT 商家 bond 从 collateral 划（[:537-565](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L537-L565)）。
+代码中 `placeOrder` 的两分支即此镜像：CRYPTO 买方缴 bond（[C2CEscrow.sol:503-528](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L503-L528)），FIAT 商家 bond 从 collateral 划（[:537-565](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L537-L565)）。
 
 ---
 
@@ -87,10 +87,10 @@ stateDiagram-v2
     EXPIRED --> [*]
 ```
 
-- `Q = {PENDING, WAITING, COMPLETED, EXPIRED}`，终态 `F = {COMPLETED, EXPIRED}`（[C2CTypes.sol:13-18](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L13-L18)）。
-- `cancelOrder` **禁用**（[:601-603](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L601-L603) revert `OrderCancellationDisabled`）。
+- `Q = {PENDING, WAITING, COMPLETED, EXPIRED}`，终态 `F = {COMPLETED, EXPIRED}`（[C2CTypes.sol:13-18](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CTypes.sol#L13-L18)）。
+- `cancelOrder` **禁用**（[:601-603](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L601-L603) revert `OrderCancellationDisabled`）。
 - 四条结构不变式：I₁ 资金守恒、I₂ 单活跃订单、I₃ 终态不可逆、I₄ 保证金绑定（论文 ch4.2.5）。
-- **超时清理 permissionless**：任何人可调 `sweepExpired*`（[:889-908](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L889-L908)），链下 [keeper](../../../tlsn-extension/packages/keeper/) 仅为便利角色，不掌握特权。
+- **超时清理 permissionless**：任何人可调 `sweepExpired*`（[:889-908](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L889-L908)），链下 [keeper](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/keeper) 仅为便利角色，不掌握特权。
 
 > [!NOTE]
 > 状态名以买方视角命名：`PENDING`=买方待举证，`WAITING`=买方等商家举证。
@@ -102,7 +102,7 @@ stateDiagram-v2
 论文 ch4.3。三项工程化决策：
 
 1. **VS 直接担任 MPC-TLS 验证方**：取消 TLSNotary 原协议的独立 Notary 角色，由业务验证服务器 VS 直接参与 TLS 密钥分割并签名，把「Notary 签名→业务复核」两段信任链压缩为一段。
-2. **QuickJS 沙箱隔离**：插件运行于 WASM 沙箱，屏蔽宿主网络/文件系统，能力经 Host 注入（[plugin-sdk/src/index.ts:455-463](../../../tlsn-extension/packages/plugin-sdk/src/index.ts#L455-L463)）。详见 [05-security-analysis.md](05-security-analysis.md) S5。
+2. **QuickJS 沙箱隔离**：插件运行于 WASM 沙箱，屏蔽宿主网络/文件系统，能力经 Host 注入（[plugin-sdk/src/index.ts:455-463](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk/src/index.ts#L455-L463)）。详见 [05-security-analysis.md](05-security-analysis.md) S5。
 3. **Service Worker + Offscreen Document 解耦**：证明计算在离屏文档，避免阻塞请求管理事件循环。
 
 证明元组 `π = (σ_VS, {cᵢ}, H_bind, sid)`（论文式 eq:ch4-proof-tuple）。生成流程：HTTP 响应截取 → 选择性承诺计算 → VS 签名（含订单绑定扩展）。原理详见 [02-zktls-tlsnotary.md](02-zktls-tlsnotary.md)。
@@ -113,7 +113,7 @@ stateDiagram-v2
 
 ### 6.1 选择性披露（Handler）
 
-字段级控制（[plugin-sdk](../../../tlsn-extension/packages/plugin-sdk/)）：每个 Handler 声明 方向(`SENT`/`RECV`) + 报文部分 + 动作(`REVEAL`/`PEDERSEN`) + 可选粒度参数。
+字段级控制（[plugin-sdk](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk)）：每个 Handler 声明 方向(`SENT`/`RECV`) + 报文部分 + 动作(`REVEAL`/`PEDERSEN`) + 可选粒度参数。
 - `REVEAL`：输出明文片段 + 盲化因子，链上可验证承诺开启。
 - `PEDERSEN`：仅输出承诺哈希，明文与盲化因子不离开本地。
 
@@ -123,7 +123,7 @@ stateDiagram-v2
 
 每笔订单创建时计算，把链下证明与特定链上订单 + 收付款账户**密码学绑定**。
 
-**共 15 个字段** keccak256（[`_computeOrderBindingHash`, C2CEscrow.sol:381-413](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L381-L413)）：
+**共 15 个字段** keccak256（[`_computeOrderBindingHash`, C2CEscrow.sol:381-413](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L381-L413)）：
 
 ```
 H_bind = keccak256(
@@ -132,12 +132,12 @@ H_bind = keccak256(
   merchantNameHash, merchantIdHash, payeeNameHash, payeeIdHash )
 ```
 
-`H_bind` 在链下作为 sessionData 传入，被 VS 签名摘要覆盖；链上以相同参数重建并比对（[`_requireOrderBinding`:423-425](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L423-L425)）。**任何参数篡改 → 重建的 H_bind 不符 → 签名恢复地址不在白名单 → 拒绝**。这从根本上消除「把合法证明移植到另一订单」的重放空间，无需额外时序约束。
+`H_bind` 在链下作为 sessionData 传入，被 VS 签名摘要覆盖；链上以相同参数重建并比对（[`_requireOrderBinding`:423-425](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L423-L425)）。**任何参数篡改 → 重建的 H_bind 不符 → 签名恢复地址不在白名单 → 拒绝**。这从根本上消除「把合法证明移植到另一订单」的重放空间，无需额外时序约束。
 
 > [!TIP]
 > 15 个字段里，4 个账户哈希（商家与买方收付款方各 name+id）直接平铺进绑定，把收付款账户身份一并锁定；`rateVersion` 把成交汇率版本也纳入绑定——用新汇率版本对旧订单生成的证明会因 H_bind 不符被拒（汇率快照测试 `RATE-07` 验证）。
 
-另有 `orderKey`（保证金隔离键）= 6 字段（[`_orderKey`:431-440](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L431-L440)）：`keccak256(escrow, chainId, merchant, productId, assetType, orderId)`。
+另有 `orderKey`（保证金隔离键）= 6 字段（[`_orderKey`:431-440](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L431-L440)）：`keccak256(escrow, chainId, merchant, productId, assetType, orderId)`。
 
 ---
 
@@ -150,7 +150,7 @@ H_bind = keccak256(
 > [!IMPORTANT]
 > **设计意图**：链上平台验证器不做账户比对，账户匹配设计在链下——当前无法在不泄露隐私的前提下于链上验证身份（对整个协议直接套 zk 会显著增加时延与手续费，对各方不利），故采用「链下 accountCheck + 验证器签名」的务实方案；链上的账户校验入口预留给未来完全去中心化阶段（zkTLS 性能达标后可平滑迁移上链）。
 
-**paramsData = 4 字段**：`(fiatAmountX1000, targetCurrency, orderDeadline, orderCreationTime)`，支付时间须落在 `[创建, 截止]` 窗口内，防止旧/过期转账被复用（[IPlatformVerifier.sol:10-18](../../../tlsn-extension/packages/contracts/contracts/interfaces/IPlatformVerifier.sol#L10-L18)）。
+**paramsData = 4 字段**：`(fiatAmountX1000, targetCurrency, orderDeadline, orderCreationTime)`，支付时间须落在 `[创建, 截止]` 窗口内，防止旧/过期转账被复用（[IPlatformVerifier.sol:10-18](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/interfaces/IPlatformVerifier.sol#L10-L18)）。
 
 ---
 
@@ -158,10 +158,10 @@ H_bind = keccak256(
 
 论文 ch4.5。双边保证金 + 动态比率 + 信誉递进。详细参数见 [contracts.md §2.3](../reference/contracts.md)。
 
-- **保证金额**：`bond = amt × bondBps / 10000`（论文式 eq:ch4-bond-calc；代码 `Math.mulDiv`, [C2CEscrow.sol:505,539](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L505)）。下单时快照 bps，存续期不变。
+- **保证金额**：`bond = amt × bondBps / 10000`（论文式 eq:ch4-bond-calc；代码 `Math.mulDiv`, [C2CEscrow.sol:505,539](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L505)）。下单时快照 bps，存续期不变。
 - **分级比率**：`bondBps(ℓ) = clamp(base + ℓ×step, min, max)`。默认 base=1000(10%)、step=300(3%/级)、min=500(5%)、max=10000(100%)；ℓ=10 → 40%（未触 100% 上限；上限为可调极端值，监管收紧时可调高 base/step）。
-- **信誉递进**：超时→等级+1 与连续超时计数+1（连续超时按 1/2/3 递进，[onTimeout:172-193](../../../tlsn-extension/packages/contracts/contracts/C2CRiskManager.sol#L172-L193)）；成功→连续超时归零、连续完成达 3 次降 1 级；累计超时达 15 次→临时冻结 30 天；信誉随时间衰减（90 天/级）。
-- **保证金库订单级隔离 + 幂等结算**（[C2CBondVault.sol](../../../tlsn-extension/packages/contracts/contracts/C2CBondVault.sol)）：成功退证明方、超时归对手方。
+- **信誉递进**：超时→等级+1 与连续超时计数+1（连续超时按 1/2/3 递进，[onTimeout:172-193](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CRiskManager.sol#L172-L193)）；成功→连续超时归零、连续完成达 3 次降 1 级；累计超时达 15 次→临时冻结 30 天；信誉随时间衰减（90 天/级）。
+- **保证金库订单级隔离 + 幂等结算**（[C2CBondVault.sol](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CBondVault.sol)）：成功退证明方、超时归对手方。
 - **pull 模式结算**：保证金先 `_credit` 进 claimable，用户自行 `claim()` 取回；`initClaimable` 写哨兵值预热存储槽以省 gas（见 [contracts.md §2.4](../reference/contracts.md)）。
 
 双边保证金构成「对称违约激励」：任一方违约（超时）→ 没收其 bond 归对手方。经济安全分析见 [05-security-analysis.md](05-security-analysis.md)。

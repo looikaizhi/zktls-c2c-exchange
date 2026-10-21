@@ -11,7 +11,7 @@
 > [!NOTE]
 > **本篇导读**
 > - **读者**：深度轨 / 评审。
-> - **数据来源**：合约测试 [`contracts/TEST_RESULT.md`](../../../tlsn-extension/packages/contracts/TEST_RESULT.md)；实验数据 [`data_analysis/`](../../../data_analysis/)（`*.csv` 源、`*.svg` 图）。
+> - **数据来源**：合约测试 [`contracts/TEST_RESULT.md`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/TEST_RESULT.md)；实验数据 [`data_analysis/`](../../../data_analysis/)（`*.csv` 源、`*.svg` 图）。
 > - **复算原则**：本篇所有数值均回源数据（CSV / 测试输出 / 合约常量）现场复算。
 
 **目录**：[合约正确性](#1-合约功能正确性) · [Gas 与经济性](#2-链上-gas-与经济性) · [TLSNotary 性能](#3-tlsnotary-协议性能) · [端到端时延](#4-端到端业务时延) · [局限性](#5-局限性论文-ch65)
@@ -22,7 +22,7 @@
 
 `npx hardhat test`（Hardhat 3.1 + Node test runner），Solidity 0.8.28、EVM cancun。每个用例在独立 EVM 快照中执行，用例间隔离。
 
-**结果：本机实跑（WSL `hardhat test`）336 passing / 0 failing，全部通过**（node:test 计数，含 7 个 helper 模块文件，业务用例约 329）。下表为逐套件分解（取自 [TEST_RESULT.md](../../../tlsn-extension/packages/contracts/TEST_RESULT.md) 归档）。
+**结果：本机实跑（WSL `hardhat test`）336 passing / 0 failing，全部通过**（node:test 计数，含 7 个 helper 模块文件，业务用例约 329）。下表为逐套件分解（取自 [TEST_RESULT.md](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/TEST_RESULT.md) 归档）。
 
 | 套件 | 用例 | 套件 | 用例 |
 |---|---:|---|---:|
@@ -53,7 +53,7 @@ $$\text{总手续费(USD)} = \text{Gas Used} \times \text{Gas Price(gwei)} \time
 
 ### 2.2 各操作 Gas 基准（实测）
 
-来自 [TEST_RESULT.md](../../../tlsn-extension/packages/contracts/TEST_RESULT.md) 与 ch6 表 6-2（两者一致）：
+来自 [TEST_RESULT.md](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/TEST_RESULT.md) 与 ch6 表 6-2（两者一致）：
 
 | 操作 | Gas |
 |---|---:|
@@ -163,7 +163,7 @@ $$\text{总手续费(USD)} = \text{Gas Used} \times \text{Gas Price(gwei)} \time
 | # | 局限 | 说明 | 代码关联 |
 |---|---|---|---|
 | 1 | 公证节点可用性单点 | 验证服务器单节点，故障中断证明流程；可用性单点与链上资产安全解耦；$m\text{-of-}n$ 阈值签名可分散 | `trustedVerifiers` 单签名地址 |
-| 2 | 账户标识枚举攻击面 | 当前账户承诺为**无盐** keccak256，已知候选集可枚举匹配 | `setPlatformBinding`（[C2CAdmin.sol:264](../../../tlsn-extension/packages/contracts/contracts/C2CAdmin.sol#L264)） |
+| 2 | 账户标识枚举攻击面 | 当前账户承诺为**无盐** keccak256，已知候选集可枚举匹配 | `setPlatformBinding`（[C2CAdmin.sol:264](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CAdmin.sol#L264)） |
 | 3 | 交易金额隐私缺失 | 订单金额明文上链，可被统计分析；需 Pedersen+范围证明 | `Order.amount` 明文 |
 | 4 | 平台 API 变更适配成本 | API 变更需双层适配（插件 + 链上验证器），后者经治理流程，响应滞后 | `platforms/*.sol` |
 | 5 | 公证节点与买方串谋边界 | T3 建模为「诚实但好奇」；纯串谋在 T2/T3 至少一成立时失效；侧信道漏洞 + bondBps 参数敏感性是残余风险 | 见 [05-security-analysis.md](05-security-analysis.md) |

@@ -15,7 +15,7 @@
 - **许可**：双许可 **Apache-2.0 OR MIT**（任选其一，见上游 README）
 - **版权**：© TLSNotary / PSE 贡献者
 
-TLSNotary 扩展提供了**基于浏览器的 TLS 证明生成基础**——正是这部分让本项目的其余工作成为可能。源码位于本仓库 [`tlsn-extension/`](../../tlsn-extension/) 子模块。
+TLSNotary 扩展提供了**基于浏览器的 TLS 证明生成基础**——正是这部分让本项目的其余工作成为可能。源码位于本仓库 [`tlsn-extension/`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043) 子模块。
 
 ## 本仓库的贡献
 
@@ -23,9 +23,9 @@ TLSNotary 扩展提供了**基于浏览器的 TLS 证明生成基础**——正�
 
 | 包/部分 | 说明 |
 |---|---|
-| [`tlsn-extension/packages/contracts`](../../tlsn-extension/packages/contracts/) | C2C 托管 / 保证金库 / 风险管理智能合约 |
-| [`tlsn-extension/packages/web`](../../tlsn-extension/packages/web/) | C2C 交易 dApp |
-| [`tlsn-extension/packages/keeper`](../../tlsn-extension/packages/keeper/) | 链上超时结算 keeper |
+| [`tlsn-extension/packages/contracts`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts) | C2C 托管 / 保证金库 / 风险管理智能合约 |
+| [`tlsn-extension/packages/web`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/web) | C2C 交易 dApp |
+| [`tlsn-extension/packages/keeper`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/keeper) | 链上超时结算 keeper |
 | `tlsn-extension/packages/verifier`、`packages/demo` 的 C2C 扩展 | 验证服务器的账户核验/签名/Webhook 等 C2C 特定逻辑 |
 
 > [!NOTE]

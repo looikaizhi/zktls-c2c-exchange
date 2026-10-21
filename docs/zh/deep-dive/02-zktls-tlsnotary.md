@@ -87,11 +87,11 @@ Prover 选直接 opening 或零知识路径；验证方依次检查字段承诺�
 ### 5.2 签名摘要语义扩展（核心）
 通用 TLSNotary 签名仅覆盖会话承诺 + 元数据，与业务订单无密码学关系。**本文在签名摘要额外纳入订单绑定哈希 `H_bind` 与策略版本哈希 `H_policy`**，使一次签名同时背书「会话内容真实性」+「订单参数一致性」，消除证明跨订单移植空间。
 
-链上恢复签名者的消息（[`_recoverVerifierSigner`, TLSNVerifier.sol:272-285](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L272-L285)）：
+链上恢复签名者的消息（[`_recoverVerifierSigner`, TLSNVerifier.sol:272-285](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L272-L285)）：
 
 $$m = \text{keccak256}(\text{chainId} ‖ \text{keccak256}(sid) ‖ H_{comm} ‖ H_{bind} ‖ H_{policy})$$
 
-链下 VS 构造的 preimage 与链上**逐字节一致**（[`sign_commitments`, verifier/src/main.rs:2064-2111](../../../tlsn-extension/packages/verifier/src/main.rs#L2064-L2111)）。`H_policy` 取自插件 config 的 `policyVersion`（[plugin-sdk/src/index.ts:880-884](../../../tlsn-extension/packages/plugin-sdk/src/index.ts#L880-L884)）。
+链下 VS 构造的 preimage 与链上**逐字节一致**（[`sign_commitments`, verifier/src/main.rs:2064-2111](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L2064-L2111)）。`H_policy` 取自插件 config 的 `policyVersion`（[plugin-sdk/src/index.ts:880-884](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk/src/index.ts#L880-L884)）。
 
 ### 5.3 选择性披露规范化
 把按需披露细化为字段级声明式规范（Handler），每字段选 `REVEAL`（明文）或 `PEDERSEN`（承诺隐藏），策略可声明/审查/扩展。
@@ -102,10 +102,10 @@ $$m = \text{keccak256}(\text{chainId} ‖ \text{keccak256}(sid) ‖ H_{comm} ‖
 
 | 论文通用机制 | 本系统实例化 | 代码证据 |
 |---|---|---|
-| 承诺函数 $H$ | 链上原生 `keccak256`：$c_i = \text{keccak256}(\text{bytes}(f_i) ‖ r_i)$ | commitment `hashAlg=Keccak256`（[verifier.rs:225-226](../../../tlsn-extension/packages/verifier/src/verifier.rs#L225-L226)） |
-| 承诺聚合 | 顺序 keccak 拼接 `H_comm = keccak256(c₁‖…‖cₙ)`，便于链上单次比对 | [`_verifyCommitmentsHash`, TLSNVerifier.sol:264-270](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L264-L270) |
-| 承诺开启校验 | 揭示项 value+blinder 重建承诺并比对 | [`_verifyCommitmentOpenings`, TLSNVerifier.sol:246-262](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L246-L262) |
-| 证明结构 π | `TLSNProof`（sessionId/chainId/commitments/revealedItems/commitmentOpenings/orderBindingHash/policyVersionHash/verifierSignature/serverName） | [C2CTypes.sol:35-69](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L35-L69) |
+| 承诺函数 $H$ | 链上原生 `keccak256`：$c_i = \text{keccak256}(\text{bytes}(f_i) ‖ r_i)$ | commitment `hashAlg=Keccak256`（[verifier.rs:225-226](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/verifier.rs#L225-L226)） |
+| 承诺聚合 | 顺序 keccak 拼接 `H_comm = keccak256(c₁‖…‖cₙ)`，便于链上单次比对 | [`_verifyCommitmentsHash`, TLSNVerifier.sol:264-270](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L264-L270) |
+| 承诺开启校验 | 揭示项 value+blinder 重建承诺并比对 | [`_verifyCommitmentOpenings`, TLSNVerifier.sol:246-262](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L246-L262) |
+| 证明结构 π | `TLSNProof`（sessionId/chainId/commitments/revealedItems/commitmentOpenings/orderBindingHash/policyVersionHash/verifierSignature/serverName） | [C2CTypes.sol:35-69](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CTypes.sol#L35-L69) |
 
 > [!TIP]
 > 通用 TLSNotary 常把承诺聚合为 Merkle 根；本系统按 ch4.3 实例化为 **keccak256 顺序拼接**，以适配 EVM 上的单次比对（代码 `_verifyCommitmentsHash`）。

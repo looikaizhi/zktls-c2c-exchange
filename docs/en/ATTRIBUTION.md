@@ -15,7 +15,7 @@ This repository is a **derivative work** built on top of [tlsnotary/tlsn-extensi
 - **License**: dual-licensed **Apache-2.0 OR MIT** (at your option, per the upstream README)
 - **Copyright**: © the TLSNotary / PSE contributors
 
-The TLSNotary extension provides the browser-based TLS proof-generation foundation — the part that makes everything else in this project possible. Its source lives in the [`tlsn-extension/`](../../tlsn-extension/) submodule of this repository.
+The TLSNotary extension provides the browser-based TLS proof-generation foundation — the part that makes everything else in this project possible. Its source lives in the [`tlsn-extension/`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043) submodule of this repository.
 
 ## Contributions in this repository
 
@@ -23,9 +23,9 @@ On top of the upstream foundation, the **C2C (consumer-to-consumer) fiat ↔ cry
 
 | Package / part | Description |
 |---|---|
-| [`tlsn-extension/packages/contracts`](../../tlsn-extension/packages/contracts/) | C2C escrow / bond-vault / risk-manager smart contracts |
-| [`tlsn-extension/packages/web`](../../tlsn-extension/packages/web/) | the C2C trading dApp |
-| [`tlsn-extension/packages/keeper`](../../tlsn-extension/packages/keeper/) | the on-chain timeout-settlement keeper |
+| [`tlsn-extension/packages/contracts`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts) | C2C escrow / bond-vault / risk-manager smart contracts |
+| [`tlsn-extension/packages/web`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/web) | the C2C trading dApp |
+| [`tlsn-extension/packages/keeper`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/keeper) | the on-chain timeout-settlement keeper |
 | C2C extensions to `tlsn-extension/packages/verifier`, `packages/demo` | C2C-specific logic in the verifier server (accountCheck/signing/Webhook, etc.) |
 
 > [!NOTE]

@@ -53,10 +53,10 @@ Off-chain, MPC-TLS turns a payment fact into a cryptographic proof; after the VS
 
 | Layer | Responsibility | Code package |
 |---|---|---|
-| On-chain contract layer | Escrow, order FSM, proof verification, risk control, bonds | [`contracts`](../../../tlsn-extension/packages/contracts/) |
-| Off-chain proof layer | Browser extension (prover) + verifier server VS | [`extension`](../../../tlsn-extension/packages/extension/) + [`verifier`](../../../tlsn-extension/packages/verifier/) + [`plugin-sdk`](../../../tlsn-extension/packages/plugin-sdk/) |
+| On-chain contract layer | Escrow, order FSM, proof verification, risk control, bonds | [`contracts`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts) |
+| Off-chain proof layer | Browser extension (prover) + verifier server VS | [`extension`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/extension) + [`verifier`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier) + [`plugin-sdk`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk) |
 | Payment-platform integration layer | Alipay/Wise HTTPS APIs, **no modification** | — |
-| Frontend interaction layer | Buyer/merchant web UI, holds no private keys | [`web`](../../../tlsn-extension/packages/web/) |
+| Frontend interaction layer | Buyer/merchant web UI, holds no private keys | [`web`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/web) |
 
 The system supports **bidirectional CRYPTO/FIAT products** (a mirror structure) and integrates Alipay and Wise via an extensible verifier interface. For package responsibilities, see [reference/code-map.md](../reference/code-map.md).
 

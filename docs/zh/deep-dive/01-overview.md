@@ -53,10 +53,10 @@ flowchart TB
 
 | 层 | 职责 | 代码包 |
 |---|---|---|
-| 链上合约层 | 托管、订单状态机、证明核验、风控、保证金 | [`contracts`](../../../tlsn-extension/packages/contracts/) |
-| 链下证明层 | 浏览器扩展（证明器）+ 验证服务器 VS | [`extension`](../../../tlsn-extension/packages/extension/) + [`verifier`](../../../tlsn-extension/packages/verifier/) + [`plugin-sdk`](../../../tlsn-extension/packages/plugin-sdk/) |
+| 链上合约层 | 托管、订单状态机、证明核验、风控、保证金 | [`contracts`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts) |
+| 链下证明层 | 浏览器扩展（证明器）+ 验证服务器 VS | [`extension`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/extension) + [`verifier`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier) + [`plugin-sdk`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk) |
 | 支付平台对接层 | 支付宝/Wise 的 HTTPS 接口，**无需改造** | — |
-| 前端交互层 | 买方/商家 Web 界面，不持私钥 | [`web`](../../../tlsn-extension/packages/web/) |
+| 前端交互层 | 买方/商家 Web 界面，不持私钥 | [`web`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/web) |
 
 系统支持 **CRYPTO/FIAT 双向产品**（镜像结构），通过可扩展验证器接口接入支付宝与 Wise。各包职责见 [reference/code-map.md](../reference/code-map.md)。
 

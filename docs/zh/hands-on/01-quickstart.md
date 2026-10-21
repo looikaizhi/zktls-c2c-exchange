@@ -11,7 +11,7 @@
 > [!NOTE]
 > **本篇导读**
 > - **读者**：动手轨。
-> - **命令来源**：[`tlsn-extension/README.md`](../../../tlsn-extension/README.md)、[`packages/contracts/scripts/deploy-web.ts`](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts)、各 `package.json`。
+> - **命令来源**：[`tlsn-extension/README.md`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/README.md)、[`packages/contracts/scripts/deploy-web.ts`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/scripts/deploy-web.ts)、各 `package.json`。
 
 > [!WARNING]
 > **本篇验证状态（如实标注）**
@@ -66,8 +66,8 @@ cd packages/contracts
 npm run deploy:web   # = hardhat run scripts/deploy-web.ts --network localhost
 ```
 
-部署脚本（[deploy-web.ts](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts)）会按顺序部署 7 个合约 + 接线 + 注册信任名单 + 种子 1 商家 + 4 产品（Wise×MYR、Alipay×CNY 各 CRYPTO/FIAT），并写出：
-- [`packages/contracts/deployments/web-31337.json`](../../../tlsn-extension/packages/contracts/deployments/web-31337.json)（地址 + `deploymentBlock`，keeper/前端读取）
+部署脚本（[deploy-web.ts](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/scripts/deploy-web.ts)）会按顺序部署 7 个合约 + 接线 + 注册信任名单 + 种子 1 商家 + 4 产品（Wise×MYR、Alipay×CNY 各 CRYPTO/FIAT），并写出：
+- `packages/contracts/deployments/web-31337.json`（地址 + `deploymentBlock`，keeper/前端读取）
 - `packages/web/.env.local`（`NEXT_PUBLIC_*` 合约地址，chainId=31337）
 
 > 部署顺序与接线详见 [reference/contracts.md §4](../reference/contracts.md)。
@@ -87,7 +87,7 @@ cargo run            # 默认监听 0.0.0.0:7047（首次会编译 Rust，稍久
 curl http://localhost:7047/health    # 期望返回：ok
 ```
 
-端点（[main.rs:223-232](../../../tlsn-extension/packages/verifier/src/main.rs#L223-L232)）：`GET /health`、`WS /session`、`WS /verifier?sessionId=`、`WS /proxy?token=`、`GET /proof*`。
+端点（[main.rs:223-232](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L223-L232)）：`GET /health`、`WS /session`、`WS /verifier?sessionId=`、`WS /proxy?token=`、`GET /proof*`。
 
 > 验证服务器需配置签名私钥（环境变量 `VERIFIER_PRIVATE_KEY`），其签名地址须与部署时 `addTrustedVerifier` 注册的地址一致（演示默认 Hardhat account[9]）。详见 [reference/verifier-plugin.md](../reference/verifier-plugin.md)。
 
@@ -120,8 +120,8 @@ npm run dev          # = node scripts/start-dev.js，Next.js 默认端口 3001
 
 无需真实支付宝/Wise 账号即可验证的路径：
 
-1. **合约层**：`npx hardhat test`（步骤 2）已覆盖完整「下单→提交证明→结算/超时」状态机（见 `ESC-FLOW`/`INT` 用例），证明数据由 [`test/helpers/buildTLSNProof.ts`](../../../tlsn-extension/packages/contracts/test/helpers/buildTLSNProof.ts) 程序化构造——**这是零真实账号验证协议正确性的最快路径**。
-2. **插件层**：扩展 DevConsole 自带示例插件，或用 [`packages/demo`](../../../tlsn-extension/packages/demo/)/[`packages/tutorial`](../../../tlsn-extension/packages/tutorial/) 的示例插件 + 样本 transcript 跑通证明生成流水线（连本地 verifier）。
+1. **合约层**：`npx hardhat test`（步骤 2）已覆盖完整「下单→提交证明→结算/超时」状态机（见 `ESC-FLOW`/`INT` 用例），证明数据由 [`test/helpers/buildTLSNProof.ts`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/test/helpers/buildTLSNProof.ts) 程序化构造——**这是零真实账号验证协议正确性的最快路径**。
+2. **插件层**：扩展 DevConsole 自带示例插件，或用 [`packages/demo`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/demo)/[`packages/tutorial`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/tutorial) 的示例插件 + 样本 transcript 跑通证明生成流水线（连本地 verifier）。
 3. **真实换汇全流程**（需真实支付宝/Wise 账号）：见 [02-demo-walkthrough.md](02-demo-walkthrough.md)。
 
 **成功判据**：

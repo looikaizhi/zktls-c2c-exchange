@@ -11,7 +11,7 @@
 > [!NOTE]
 > **本篇导读**
 > - **读者**：动手轨。
-> - **来源**：合约函数/事件（`packages/contracts`）+ 部署种子数据（[deploy-web.ts](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts)）。
+> - **来源**：合约函数/事件（`packages/contracts`）+ 部署种子数据（[deploy-web.ts](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/scripts/deploy-web.ts)）。
 
 > [!WARNING]
 > **验证状态**：本篇步骤的**合约函数与事件**均与源码核对一致；**截图/录屏为占位**（`docs/assets/screenshots/`、`docs/assets/demo/` 待作者用真实环境补录）。真实换汇全流程需真实支付宝/Wise 账号，无法在自动环境复现。
@@ -20,7 +20,7 @@
 
 ## 场景设定
 
-部署脚本种子数据（[deploy-web.ts:638-661](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts#L638-L661)）：1 个商家（Hardhat account[1]）、4 个产品：
+部署脚本种子数据（[deploy-web.ts:638-661](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/scripts/deploy-web.ts#L638-L661)）：1 个商家（Hardhat account[1]）、4 个产品：
 
 | 产品 | 类型 | 法币 | 加密 | 平台 | 汇率 |
 |---|---|---|---|---|---|
@@ -39,12 +39,12 @@
 
 | 在干什么 | 合约函数 | 事件 |
 |---|---|---|
-| 注册支持的加密/法币资产 | `C2CAdmin.addCryptoInfo`/`addFiatInfo`（[:128](../../../tlsn-extension/packages/contracts/contracts/C2CAdmin.sol#L128)/[:143](../../../tlsn-extension/packages/contracts/contracts/C2CAdmin.sol#L143)） | `SupportCryptoAdded`/`SupportFiatAdded` |
-| 信任验证器/支付服务器 | `TLSNVerifier.addTrustedVerifier`/`addTrustedPaymentServer`（[:119](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L119)/[:139](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L139)） | `TrustedVerifierAdded`/`TrustedPaymentServerAdded` |
-| 注册平台验证器 | `TLSNVerifier.setPlatformVerifier`（[:154](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L154)） | `PlatformVerifierSet` |
+| 注册支持的加密/法币资产 | `C2CAdmin.addCryptoInfo`/`addFiatInfo`（[:128](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CAdmin.sol#L128)/[:143](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CAdmin.sol#L143)） | `SupportCryptoAdded`/`SupportFiatAdded` |
+| 信任验证器/支付服务器 | `TLSNVerifier.addTrustedVerifier`/`addTrustedPaymentServer`（[:119](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L119)/[:139](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L139)） | `TrustedVerifierAdded`/`TrustedPaymentServerAdded` |
+| 注册平台验证器 | `TLSNVerifier.setPlatformVerifier`（[:154](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L154)） | `PlatformVerifierSet` |
 
 > [!NOTE]
-> 默认信任支付服务器：`wise.com`、`mbillexprod.alipay.com`（[deploy-web.ts:406](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts#L406)）。
+> 默认信任支付服务器：`wise.com`、`mbillexprod.alipay.com`（[deploy-web.ts:406](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/scripts/deploy-web.ts#L406)）。
 
 <!-- TODO(截图): docs/assets/screenshots/01-admin-console.png —— 管理员控制台 -->
 
@@ -53,10 +53,10 @@
 | 在干什么 | 合约函数 | 事件 |
 |---|---|---|
 | 商家注册（需 KYB） | `C2CAdmin.registerMerchant`（KYB 证明）/`registerMerchantByAdmin` | `MerchantRegistered` |
-| 绑定支付账户（仅存哈希承诺） | `C2CAdmin.setPlatformBinding`（[:264](../../../tlsn-extension/packages/contracts/contracts/C2CAdmin.sol#L264)） | `PlatformBindingSet` |
-| 上架产品 | `C2CEscrow.listCryptoProduct`/`listFiatProduct`（[:261](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L261)/[:287](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L287)） | `ProductListed` |
-| 发布汇率（×1e8 编码） | `C2CAdmin.publishRate`（[:308](../../../tlsn-extension/packages/contracts/contracts/C2CAdmin.sol#L308)） | `RatePublished` |
-| 开启营业 | `C2CAdmin.openNow`（[:343](../../../tlsn-extension/packages/contracts/contracts/C2CAdmin.sol#L343)） | `ManualOverrideSet` |
+| 绑定支付账户（仅存哈希承诺） | `C2CAdmin.setPlatformBinding`（[:264](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CAdmin.sol#L264)） | `PlatformBindingSet` |
+| 上架产品 | `C2CEscrow.listCryptoProduct`/`listFiatProduct`（[:261](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L261)/[:287](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L287)） | `ProductListed` |
+| 发布汇率（×1e8 编码） | `C2CAdmin.publishRate`（[:308](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CAdmin.sol#L308)） | `RatePublished` |
+| 开启营业 | `C2CAdmin.openNow`（[:343](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CAdmin.sol#L343)） | `ManualOverrideSet` |
 
 > [!NOTE]
 > 账户绑定上链的是 `nameHash`/`idHash`（keccak256 承诺），明文 + 随机 salt 存链下 DB；支付宝因证明只揭示**掩码**身份，绑定对掩码值取承诺。详见 [deep-dive/05 §4](../deep-dive/05-security-analysis.md)。
@@ -68,9 +68,9 @@
 | 在干什么 | 合约函数 | 事件 |
 |---|---|---|
 | 买方绑定自己的收款账户 | `C2CAdmin.setPlatformBinding` | `PlatformBindingSet` |
-| 下单 + 双层锁定 | `C2CEscrow.placeOrder`（[:446](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L446)） | `OrderPlaced` + `OrderStatusChanged` |
+| 下单 + 双层锁定 | `C2CEscrow.placeOrder`（[:446](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L446)） | `OrderPlaced` + `OrderStatusChanged` |
 
-`placeOrder` 内部（CRYPTO 分支）：查 `requiredBondBps` → 买方缴 bond 转入 BondVault（[:503-528](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L503-L528)）→ 商家 collateral 标记 `pendingAmount` → 计算 15 字段 `H_bind`（[:381-413](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L381-L413)）→ 订单初态 **PENDING**，deadline = now + 15 分钟。
+`placeOrder` 内部（CRYPTO 分支）：查 `requiredBondBps` → 买方缴 bond 转入 BondVault（[:503-528](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L503-L528)）→ 商家 collateral 标记 `pendingAmount` → 计算 15 字段 `H_bind`（[:381-413](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L381-L413)）→ 订单初态 **PENDING**，deadline = now + 15 分钟。
 
 > [!NOTE]
 > 前置校验：自成交禁止 `SelfTradeNotAllowed`、买方须先绑定支付账户 `BuyerBindingNotSet`、USD 单笔上限 `ExceedsUsdCap`、营业时段 `MerchantClosed`。
@@ -83,7 +83,7 @@
 |---|---|
 | 买方在支付宝向商家收款账户转 CNY | 真实支付平台 |
 | 扩展发起公证：MPC-TLS 抓取支付宝订单 API 响应 | 扩展 + `plugin-sdk` 的 `prove()` |
-| VS 链下核验账户（accountCheck）+ 签名（含 H_bind） | [`verifier`](../../../tlsn-extension/packages/verifier/) |
+| VS 链下核验账户（accountCheck）+ 签名（含 H_bind） | [`verifier`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier) |
 
 产物 = 证明元组 `π = (σ_VS, {cᵢ}, H_bind, sid)`。原理见 [deep-dive/02-zktls-tlsnotary.md](../deep-dive/02-zktls-tlsnotary.md)。
 
@@ -93,12 +93,12 @@
 
 | 在干什么 | 合约函数 | 事件 |
 |---|---|---|
-| 买方提交证明、链上核验后放币 | `C2CEscrow.payOrderByPlatform`（[:609](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L609)） | `OrderStatusChanged`(COMPLETED) + `OrderProofLinked` |
+| 买方提交证明、链上核验后放币 | `C2CEscrow.payOrderByPlatform`（[:609](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L609)） | `OrderStatusChanged`(COMPLETED) + `OrderProofLinked` |
 
 内部：`verifyAndDelegate`（五步密码学校验 + 委托支付宝验证器业务校验）→ 通过则放 USDT 给买方、退买方 bond（pull，需 `claim()`）、通知 RiskManager `onCompleted`。
 
 > [!NOTE]
-> FIAT 产品对称：商家付法币 → `receiveCryptoWithPlatformPayment`（[:670](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L670)）。若买方超时未提交证明 → 任何人可 `sweepExpired*` 清理 → 状态 EXPIRED、bond 归商家。
+> FIAT 产品对称：商家付法币 → `receiveCryptoWithPlatformPayment`（[:670](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L670)）。若买方超时未提交证明 → 任何人可 `sweepExpired*` 清理 → 状态 EXPIRED、bond 归商家。
 
 <!-- TODO(截图): docs/assets/screenshots/05-settlement.png —— 链上结算 -->
 

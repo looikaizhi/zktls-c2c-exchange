@@ -11,7 +11,7 @@
 > [!NOTE]
 > **Reading guide**
 > - **Audience**: hands-on track.
-> - **Custom-error source**: [`C2CTypes.sol:108-194`](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L108-L194).
+> - **Custom-error source**: [`C2CTypes.sol:108-194`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CTypes.sol#L108-L194).
 
 **Contents**: [Environment & startup](#1-environment--startup) · [Revert error reference](#2-contract-revert-custom-error-reference) · [Proof generation](#3-proof-generation-phase) · [Gas & on-chain](#4-gas--on-chain) · [FAQ](#5-faq)
 
@@ -22,9 +22,9 @@
 | Symptom | Cause / fix |
 |---|---|
 | `'hardhat' is not recognized` / `command not found` | hardhat is hoisted to the root `node_modules/.bin`. Run `npx hardhat test` from `packages/contracts`, or add the root `.bin` to PATH. |
-| `curl localhost:7047/health` no response | The verifier server is not up or still compiling. `cd packages/verifier && cargo run`; the first build takes a while; confirm it listens on `0.0.0.0:7047` ([main.rs:250](../../../tlsn-extension/packages/verifier/src/main.rs#L250)). |
+| `curl localhost:7047/health` no response | The verifier server is not up or still compiling. `cd packages/verifier && cargo run`; the first build takes a while; confirm it listens on `0.0.0.0:7047` ([main.rs:250](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L250)). |
 | Frontend can't connect / wrong addresses after deploy | `deploy:web` rewrites `packages/web/.env.local` and `deployments/web-31337.json`; after redeploying, **restart the Next dev server** (port 3001) so it reads the new addresses. |
-| keeper doesn't clean up expired orders | A redeploy deletes `keeper/data/state.json`; the keeper process must be **restarted** to re-scan from the new escrow's deploymentBlock ([deploy-web.ts:750-770](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts#L750-L770)). |
+| keeper doesn't clean up expired orders | A redeploy deletes `keeper/data/state.json`; the keeper process must be **restarted** to re-scan from the new escrow's deploymentBlock ([deploy-web.ts:750-770](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/scripts/deploy-web.ts#L750-L770)). |
 | `better-sqlite3` fails to load | The web DB depends on a native module; rebuild with `npm install` on the target platform. The deploy script needs it to write seed data. |
 
 ---
@@ -58,7 +58,7 @@ The most common custom errors during order placement / proof submission (the wal
 | `ContractPaused` | The contract is paused by the admin |
 
 > [!TIP]
-> For the full list, see [C2CTypes.sol:108-194](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L108-L194).
+> For the full list, see [C2CTypes.sol:108-194](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CTypes.sol#L108-L194).
 
 ---
 
@@ -66,7 +66,7 @@ The most common custom errors during order placement / proof submission (the wal
 
 | Symptom | Cause / fix |
 |---|---|
-| Extension/notary version mismatch | The extension version **must** match the notary/verifier version it connects to ([README warning](../../../tlsn-extension/README.md)), otherwise the MPC-TLS handshake fails. |
+| Extension/notary version mismatch | The extension version **must** match the notary/verifier version it connects to ([README warning](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/README.md)), otherwise the MPC-TLS handshake fails. |
 | WASM execution blocked by CSP | The extension manifest needs `content_security_policy: wasm-unsafe-eval` (already configured); when integrating into your own page, remember to allow WASM. |
 | Large-response proof is slow/stuck | Browser WASM slows non-linearly when the response body exceeds 5–10 KB (see [06-evaluation §3](../deep-dive/06-evaluation.md)); this system's API responses are 2–5 KB, in the normal range. |
 | Weak network (high latency + low bandwidth) handshake timeout | TLSNotary has a minimum network-quality threshold: under 3G (300ms/2Mbps) the handshake always times out ([06-evaluation §4.4](../deep-dive/06-evaluation.md)). |
@@ -89,7 +89,7 @@ docker run -it --rm -p 55688:80 novnc/websockify 80 api.x.com:443
 | Symptom | Cause / fix |
 |---|---|
 | `placeOrder` gas estimation fails | Usually because a pre-check would revert (binding not set, over cap, business hours, etc., see §2); rule out the revert first, then estimate gas. The demo deploy pre-approves escrow + BondVault for accounts. |
-| Claimed bond not received | Settlement is **pull-mode**: after success/timeout the bond is credited to `claimable`; you must call `C2CBondVault.claim(token)` ([:126](../../../tlsn-extension/packages/contracts/contracts/C2CBondVault.sol#L126)). |
+| Claimed bond not received | Settlement is **pull-mode**: after success/timeout the bond is credited to `claimable`; you must call `C2CBondVault.claim(token)` ([:126](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CBondVault.sol#L126)). |
 | Expired order state unchanged | Cleanup is not automatic: anyone must call `sweepExpired*`, or the keeper triggers it; or the next `placeOrder` runs `_cleanupExpired` along the way. |
 
 ---

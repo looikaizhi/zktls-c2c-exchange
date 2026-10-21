@@ -11,7 +11,7 @@
 > [!NOTE]
 > **本篇导读**
 > - **读者**：动手轨。
-> - **自定义错误源**：[`C2CTypes.sol:108-194`](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L108-L194)。
+> - **自定义错误源**：[`C2CTypes.sol:108-194`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CTypes.sol#L108-L194)。
 
 **目录**：[环境与启动](#1-环境与启动) · [revert 错误对照](#2-合约-revert-自定义错误对照) · [证明生成](#3-证明生成阶段) · [Gas 与链上](#4-gas-与链上) · [FAQ](#5-faq)
 
@@ -22,9 +22,9 @@
 | 现象 | 原因 / 解决 |
 |---|---|
 | `'hardhat' is not recognized` / `command not found` | hardhat 提升到根 `node_modules/.bin`。从 `packages/contracts` 跑 `npx hardhat test`，或把根 `.bin` 加入 PATH。 |
-| `curl localhost:7047/health` 无响应 | 验证服务器没起或还在编译。`cd packages/verifier && cargo run`，首次编译较久；确认监听 `0.0.0.0:7047`（[main.rs:250](../../../tlsn-extension/packages/verifier/src/main.rs#L250)）。 |
+| `curl localhost:7047/health` 无响应 | 验证服务器没起或还在编译。`cd packages/verifier && cargo run`，首次编译较久；确认监听 `0.0.0.0:7047`（[main.rs:250](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L250)）。 |
 | 部署后前端连不上 / 地址不对 | `deploy:web` 会重写 `packages/web/.env.local` 与 `deployments/web-31337.json`；重新部署后**重启 Next dev server**（端口 3001）让其读取新地址。 |
-| keeper 不清理过期单 | 重新部署会删 `keeper/data/state.json`；keeper 进程须**重启**才会从新 escrow 的 deploymentBlock 重新扫描（[deploy-web.ts:750-770](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts#L750-L770)）。 |
+| keeper 不清理过期单 | 重新部署会删 `keeper/data/state.json`；keeper 进程须**重启**才会从新 escrow 的 deploymentBlock 重新扫描（[deploy-web.ts:750-770](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/scripts/deploy-web.ts#L750-L770)）。 |
 | `better-sqlite3` 加载失败 | web 的 DB 依赖原生模块；在对应平台 `npm install` 重建。部署脚本需要它写种子数据。 |
 
 ---
@@ -58,7 +58,7 @@
 | `ContractPaused` | 合约被 admin 暂停 |
 
 > [!TIP]
-> 完整列表见 [C2CTypes.sol:108-194](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L108-L194)。
+> 完整列表见 [C2CTypes.sol:108-194](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CTypes.sol#L108-L194)。
 
 ---
 
@@ -66,7 +66,7 @@
 
 | 现象 | 原因 / 解决 |
 |---|---|
-| 扩展与 notary 版本不匹配 | 扩展版本**必须**与连接的 notary/验证器版本一致（[README 警告](../../../tlsn-extension/README.md)），否则 MPC-TLS 握手失败。 |
+| 扩展与 notary 版本不匹配 | 扩展版本**必须**与连接的 notary/验证器版本一致（[README 警告](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/README.md)），否则 MPC-TLS 握手失败。 |
 | WASM 执行被 CSP 拦截 | 扩展 manifest 需 `content_security_policy: wasm-unsafe-eval`（已配置）；自建页面集成时注意放行 WASM。 |
 | 大响应体证明很慢/卡住 | 浏览器 WASM 在响应体 >5–10 KB 后非线性变慢（见 [06-evaluation §3](../deep-dive/06-evaluation.md)）；本系统 API 响应 2–5 KB 属正常区间。 |
 | 弱网（高延迟+低带宽）握手超时 | TLSNotary 存在最低网络质量门槛：3G（300ms/2Mbps）下握手必超时（[06-evaluation §4.4](../deep-dive/06-evaluation.md)）。 |
@@ -89,7 +89,7 @@ docker run -it --rm -p 55688:80 novnc/websockify 80 api.x.com:443
 | 现象 | 原因 / 解决 |
 |---|---|
 | `placeOrder` Gas 估算失败 | 多因前置校验会 revert（绑定未设、超额、营业时段等，见 §2）；先排除 revert 再估 Gas。演示部署已为账户预授权 escrow + BondVault。 |
-| 领取保证金没到账 | 结算是 **pull 模式**：成功/超时后 bond 记入 `claimable`，需自行调 `C2CBondVault.claim(token)`（[:126](../../../tlsn-extension/packages/contracts/contracts/C2CBondVault.sol#L126)）。 |
+| 领取保证金没到账 | 结算是 **pull 模式**：成功/超时后 bond 记入 `claimable`，需自行调 `C2CBondVault.claim(token)`（[:126](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CBondVault.sol#L126)）。 |
 | 过期订单状态没变 | 清理非自动：需任何人调 `sweepExpired*` 或由 keeper 触发；或下个 `placeOrder` 会顺带 `_cleanupExpired`。 |
 
 ---

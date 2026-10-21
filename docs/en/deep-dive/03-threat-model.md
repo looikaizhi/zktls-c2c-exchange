@@ -47,7 +47,7 @@ All adversaries are modeled as **Probabilistic Polynomial-Time (PPT)** algorithm
 | Attack scenario | Required assumptions | Security goal | Core defense | Code evidence |
 |---|---|---|---|---|
 | Fake-payment fraud | T1–T4 | S1 | MPC-TLS commitments + H_bind + platform semantic checks | `verifyAndDelegate`, `_computeOrderBindingHash` |
-| Proof replay | T1 | S2 | H_bind cross-order binding + U_sess dedup | `_checkAndMarkSessionId` ([TLSNVerifier.sol:240-244](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L240-L244)) |
+| Proof replay | T1 | S2 | H_bind cross-order binding + U_sess dedup | `_checkAndMarkSessionId` ([TLSNVerifier.sol:240-244](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L240-L244)) |
 | Account-privacy leakage | T2,T4 | S3 | On-chain hash commitment + selective disclosure | `PlatformBinding` (hash), off-chain accountCheck |
 | Plugin supply-chain attack | T5 | S5 | WASM sandbox capability limits + version signing | `plugin-sdk` QuickJS sandbox |
 | Merchant non-payment | T1–T3 | — (economic) | Self-service release without merchant confirmation + timeout settlement + H_bind account binding | `payOrderByPlatform`, `sweepExpired*` |
@@ -66,14 +66,14 @@ Five mutually independent assumptions (thesis ch3.6.1), covering the blockchain,
 |---|---|---|---|
 | **T1 Blockchain layer** | Immutability of on-chain txs, deterministic contract execution, BFT consensus | If broken, all on-chain guarantees fail at once (base assumption) | all contracts |
 | **T2 TLS cryptographic strength** | TLS 1.2/1.3 hardness assumptions hold against PPT | If broken, the MPC-TLS authenticity guarantee collapses | `verifier` (MPC-TLS) |
-| **T3 Verifier honest-but-constrained** | VS follows the MPC-TLS spec and **does not collude with the buyer to forge the PP response**; its DoS-type behavior only affects availability | Active cheating still cannot produce a valid fake proof under T2 | `trustedVerifiers` ([TLSNVerifier.sol:41](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L41)) |
+| **T3 Verifier honest-but-constrained** | VS follows the MPC-TLS spec and **does not collude with the buyer to forge the PP response**; its DoS-type behavior only affects availability | Active cheating still cannot produce a valid fake proof under T2 | `trustedVerifiers` ([TLSNVerifier.sol:41](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L41)) |
 | **T4 Payment-platform API stability** | PP key APIs/formats stable within the plugin version's life, certificates issued by trusted CAs | If broken, the proof is cryptographically valid but its semantics may be untrue | `trustedPaymentServers`, `platforms/*.sol` |
 | **T5 User device security** | The local device is not root-compromised | If broken, sandbox isolation is weakened (on-chain assets still protected by keys + chain security) | QuickJS sandbox |
 
 **The combined security boundary of T2 and T3** (thesis ch3.6.1 highlight): if the VS actively colludes with the buyer, the two jointly hold the full TLS session key, which is cryptographically equivalent to being able to forge a trusted-CA-issued certificate — exactly the stronger hardness premise that T2 rules out. **So T2 and T3 are complementary: as long as either holds, the pure-collusion path fails cryptographically and S1 still holds.** The residual risk comes from MPC-implementation side channels (timing / memory-access), an engineering-layer concern (see [06-evaluation.md §5](06-evaluation.md) limitation 5).
 
 > [!NOTE]
-> The three trust lists in code are `trustedVerifiers`/`trustedKYBServers`/`trustedPaymentServers` ([TLSNVerifier.sol:41-44](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L41-L44)), maintained by the admin, realizing T3 (verifier) and T4 (payment/KYB servers) on-chain.
+> The three trust lists in code are `trustedVerifiers`/`trustedKYBServers`/`trustedPaymentServers` ([TLSNVerifier.sol:41-44](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L41-L44)), maintained by the admin, realizing T3 (verifier) and T4 (payment/KYB servers) on-chain.
 
 ---
 
@@ -85,8 +85,8 @@ Five mutually independent assumptions (thesis ch3.6.1), covering the blockchain,
 
 | Domain | Functions covered | Code realization |
 |---|---|---|
-| **Decentralized domain 𝒟** | Asset escrow, order state, proof verification, platform governance | [`contracts`](../../../tlsn-extension/packages/contracts/) |
-| **Constrained centralized domain 𝒞** | MPC-TLS co-computation, selective-disclosure endorsement, off-chain account-consistency check | [`verifier`](../../../tlsn-extension/packages/verifier/) |
+| **Decentralized domain 𝒟** | Asset escrow, order state, proof verification, platform governance | [`contracts`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts) |
+| **Constrained centralized domain 𝒞** | MPC-TLS co-computation, selective-disclosure endorsement, off-chain account-consistency check | [`verifier`](https://github.com/looikaizhi/c2c-platform-tlsn/tree/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier) |
 
 **Why semi-decentralized rather than fully decentralized** (thesis ch3.1.4):
 1. **Full on-chain TLS verification is currently infeasible**: running ECDHE/AES-GCM/MAC verification in the EVM would cost gas far beyond the block limit, and there is no mature EVM-native TLS verification.
@@ -116,7 +116,7 @@ Under the constraint that pure-decentralized zkTLS latency is not yet practical,
 ---
 
 > [!TIP]
-> Order state set `Q = {PENDING, WAITING, COMPLETED, EXPIRED}` ([C2CTypes.sol:13-18](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L13-L18)). How the mechanisms deliver these security goals: see [04-protocol-design.md](04-protocol-design.md) and [05-security-analysis.md](05-security-analysis.md).
+> Order state set `Q = {PENDING, WAITING, COMPLETED, EXPIRED}` ([C2CTypes.sol:13-18](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CTypes.sol#L13-L18)). How the mechanisms deliver these security goals: see [04-protocol-design.md](04-protocol-design.md) and [05-security-analysis.md](05-security-analysis.md).
 
 ---
 

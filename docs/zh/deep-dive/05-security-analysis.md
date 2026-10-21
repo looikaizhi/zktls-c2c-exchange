@@ -38,11 +38,11 @@
 
 **成立条件 T1∧T2∧T3∧T4**（论文 ch4.8.1）。三层递进约束：
 
-1. **TLS 传输真实性（T2）**：MPC-TLS 要求 VS 与支付平台 PP 协作建 TLS 会话，对称密钥双方联合派生，任一方无法单独持完整密钥 → 攻击者无法在不与 PP 建立真实连接下使 VS 对伪造响应产生有效承诺。链下逻辑见 [verifier/src/verifier.rs](../../../tlsn-extension/packages/verifier/src/verifier.rs)。
-2. **选择性披露完整性（T2）**：VS 签名覆盖承诺集合 `{cᵢ}`，每个 `cᵢ` 是响应字节区间承诺；篡改承诺使签名失效。链上校验 [`_verifyCommitmentOpenings`/`_verifyCommitmentsHash`, TLSNVerifier.sol:246-270](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L246-L270)。
+1. **TLS 传输真实性（T2）**：MPC-TLS 要求 VS 与支付平台 PP 协作建 TLS 会话，对称密钥双方联合派生，任一方无法单独持完整密钥 → 攻击者无法在不与 PP 建立真实连接下使 VS 对伪造响应产生有效承诺。链下逻辑见 [verifier/src/verifier.rs](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/verifier.rs)。
+2. **选择性披露完整性（T2）**：VS 签名覆盖承诺集合 `{cᵢ}`，每个 `cᵢ` 是响应字节区间承诺；篡改承诺使签名失效。链上校验 [`_verifyCommitmentOpenings`/`_verifyCommitmentsHash`, TLSNVerifier.sol:246-270](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L246-L270)。
 3. **订单绑定不可分离（T2）**：签名摘要嵌入 `H_bind`（见 [04 §6.2](04-protocol-design.md)）；攻击者无法为参数不一致订单构造合法签名。
 
-链上 [`verifyAndDelegate`](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L196-L223) 依次执行 ECDSA 签名者校验（[`_recoverVerifierSigner`:272-285](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L272-L285)，查 `trustedVerifiers`）、H_bind 一致性、平台业务校验。在 T1∧T2∧T3 下伪造证明通过全部校验的概率可归约至密码学困难问题，对 PPT 攻击者可忽略。
+链上 [`verifyAndDelegate`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L196-L223) 依次执行 ECDSA 签名者校验（[`_recoverVerifierSigner`:272-285](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L272-L285)，查 `trustedVerifiers`）、H_bind 一致性、平台业务校验。在 T1∧T2∧T3 下伪造证明通过全部校验的概率可归约至密码学困难问题，对 PPT 攻击者可忽略。
 
 > [!NOTE]
 > 密码学不可伪造性仅保证「证明内容 = PP 实际返回的响应」；支付事实的**语义真实性**还依赖 T4。测试佐证：`ESC-ATT-01/05`（错误 H_bind / 篡改签名）、`ESC-TAMPER-01/02` 均按预期 revert。
@@ -54,7 +54,7 @@
 **成立条件 T1**（论文 ch4.8.2）。两套**正交**机制：
 
 - **跨订单重放防护**：签名摘要绑定含 `orderId` 的 `H_bind`；O₁ 的证明提交到 O₂ 会因 H_bind 不符被拒。
-- **同订单重复提交防护**：链上维护已用会话集合 `U_sess`，`sid` 首次验证后写入（[`_checkAndMarkSessionId`, TLSNVerifier.sol:240-244](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L240-L244)），重复提交因成员检查失败被拒。
+- **同订单重复提交防护**：链上维护已用会话集合 `U_sess`，`sid` 首次验证后写入（[`_checkAndMarkSessionId`, TLSNVerifier.sol:240-244](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L240-L244)），重复提交因成员检查失败被拒。
 
 此外平台层还有 `usedAlipayOrderIds`/`usedTransferIds` 第三层去重，及 paramsData 的支付时间窗下限（防旧转账复用）。测试佐证：`ESC-ATT-04`（重放 sessionId）、`WISE-ATT-01`/`ALI-ATT-01`（跨订单 txId 重放）、`INT-10`（跨平台 sessionId 复用）均拒绝。
 
@@ -64,15 +64,15 @@
 
 **成立条件 T2∧T4**（论文 ch4.8.3）。三层：
 
-1. **链上**：合约仅存账户标识的 keccak256 承诺（[`setPlatformBinding`, C2CAdmin.sol:264-278](../../../tlsn-extension/packages/contracts/contracts/C2CAdmin.sol#L264-L278)；`PlatformBinding`/`BuyerPaymentInfo` 结构），明文不上链。
+1. **链上**：合约仅存账户标识的 keccak256 承诺（[`setPlatformBinding`, C2CAdmin.sol:264-278](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CAdmin.sol#L264-L278)；`PlatformBinding`/`BuyerPaymentInfo` 结构），明文不上链。
 2. **公证证明**：账户标识字段采 Pedersen 承诺处理，原始标识仅存于本地与 VS 的 MPC 环境。
-3. **协议执行**：收付款账户一致性校验在 MPC 环境完成（链下 accountCheck，[verifier/src/main.rs:1366-1422](../../../tlsn-extension/packages/verifier/src/main.rs#L1366-L1422)），链上只验承诺一致性。
+3. **协议执行**：收付款账户一致性校验在 MPC 环境完成（链下 accountCheck，[verifier/src/main.rs:1366-1422](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/verifier/src/main.rs#L1366-L1422)），链上只验承诺一致性。
 
 > [!TIP]
 > 账户身份匹配在**链下 VS** 完成（论文 ch4.4.2/S3），链上平台验证器不做账户比对——这是有意设计：当前无法在不泄露隐私下链上验证身份，链上的账户校验入口预留给未来完全去中心化阶段。详见 [04 §7](04-protocol-design.md)。
 
 > [!IMPORTANT]
-> **隐私局限（论文 ch6.5）**：当前账户承诺为**无盐** keccak256，掌握候选账户集的攻击者可批量枚举匹配，隐匿强度退化为候选空间规模函数。改进方向：以 `H(accountId ‖ orderId ‖ chainId)` 派生盐绑定每笔订单。另：演示部署中支付宝因证明只揭示**掩码**身份，绑定对掩码值取承诺（[deploy-web.ts:44-61](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts#L44-L61)）。
+> **隐私局限（论文 ch6.5）**：当前账户承诺为**无盐** keccak256，掌握候选账户集的攻击者可批量枚举匹配，隐匿强度退化为候选空间规模函数。改进方向：以 `H(accountId ‖ orderId ‖ chainId)` 派生盐绑定每笔订单。另：演示部署中支付宝因证明只揭示**掩码**身份，绑定对掩码值取承诺（[deploy-web.ts:44-61](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/scripts/deploy-web.ts#L44-L61)）。
 
 ---
 
@@ -81,7 +81,7 @@
 **成立条件 T1∧T2∧T3**（论文 ch4.8.4）。四重约束把对 VS 的信任压到最小（仅 T3：诚实执行 MPC-TLS）：
 
 1. **资产无关性**：VS 仅能对会话摘要签名，签名的链上效力仍须过合约多重验证，不能直接动资产。
-2. **注册强制**：VS 链上身份须在 `trustedVerifiers` 注册（[TLSNVerifier.sol:236](../../../tlsn-extension/packages/contracts/contracts/TLSNVerifier.sol#L236)），未注册签名一律拒。
+2. **注册强制**：VS 链上身份须在 `trustedVerifiers` 注册（[TLSNVerifier.sol:236](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/TLSNVerifier.sol#L236)），未注册签名一律拒。
 3. **订单绑定强制**：所有签名须含正确 `H_bind`，VS 无法为参数不一致订单构造合法绑定。
 4. **MPC-TLS 约束**：T2 下 VS 无法独立伪造 PP 的 HTTPS 响应，签名能力仅限背书真实参与计算的会话。
 
@@ -91,7 +91,7 @@
 
 ## 6. S5 — 插件执行安全隔离
 
-**成立条件 T5**（论文 ch4.8.5）。第三方插件在 QuickJS WebAssembly 沙箱执行（[plugin-sdk/src/index.ts:455-463](../../../tlsn-extension/packages/plugin-sdk/src/index.ts#L455-L463)，`allowFetch:false, allowFs:false`）：
+**成立条件 T5**（论文 ch4.8.5）。第三方插件在 QuickJS WebAssembly 沙箱执行（[plugin-sdk/src/index.ts:455-463](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/plugin-sdk/src/index.ts#L455-L463)，`allowFetch:false, allowFs:false`）：
 
 - **能力限制**：沙箱仅暴露 Host 显式声明的受控接口（`prove`/`openWindow`/`done` 等经 env 注入），对宿主内部状态、私钥、其他窗口数据、系统接口的访问在基础设施层禁止，不依赖插件自律。
 - **运行时权限校验**：插件须声明所需权限，每次调用比对，超范围调用被拦截。
@@ -106,17 +106,17 @@
 
 ### 7.1 商家拒付攻击
 在 T1∧T2∧T3 下不具技术可行性：
-- **CRYPTO**：商家预锁币，买方付款后**自主**调用释放接口，全程不需商家在线/授权（[`payOrderByPlatform`](../../../tlsn-extension/packages/contracts/contracts/C2CEscrow.sol#L609)），商家不合作无影响。
+- **CRYPTO**：商家预锁币，买方付款后**自主**调用释放接口，全程不需商家在线/授权（[`payOrderByPlatform`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CEscrow.sol#L609)），商家不合作无影响。
 - **FIAT**：商家拒付→无法生成证明→买方超时取回锁定资产 + 没收商家 bond；商家付后拒提交证明→等同放弃币权，超时同样没收 bond。
 - **虚假收款账户替换**：账户哈希纳入 `H_bind`，中途换账户→链上校验失败。
 
 ### 7.2 流动性耗尽攻击
 两层经济约束：
-- **第一层**：每次违约直接没收当次 bond（[`onTimeout`, C2CRiskManager.sol:172-193](../../../tlsn-extension/packages/contracts/contracts/C2CRiskManager.sol#L172-L193) + [`BondVault.settle`](../../../tlsn-extension/packages/contracts/contracts/C2CBondVault.sol#L84)），攻击总成本随并发订单线性增长。
+- **第一层**：每次违约直接没收当次 bond（[`onTimeout`, C2CRiskManager.sol:172-193](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CRiskManager.sol#L172-L193) + [`BondVault.settle`](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CBondVault.sol#L84)），攻击总成本随并发订单线性增长。
 - **第二层**：信誉动态调高 `bondBps`、达阈值临时封禁，单次攻击成本递增。
 
 > [!IMPORTANT]
-> **参数敏感性局限**（论文 ch4.7.3 + ch6.5）：若 `bondBps` 设置偏低，大资金攻击者仍可承受较小相对损失持续攻击。参数 `setRiskConfig` 可调（[C2CRiskManager.sol:86-102](../../../tlsn-extension/packages/contracts/contracts/C2CRiskManager.sol#L86-L102)），须按资产规模与风险收益比权衡。测试 `BOND-19`：极大 stepBps → 返回 maxBondBps 不 panic。
+> **参数敏感性局限**（论文 ch4.7.3 + ch6.5）：若 `bondBps` 设置偏低，大资金攻击者仍可承受较小相对损失持续攻击。参数 `setRiskConfig` 可调（[C2CRiskManager.sol:86-102](https://github.com/looikaizhi/c2c-platform-tlsn/blob/c529ffce7f518cb2c3979ada4ff67e655da3e043/packages/contracts/contracts/C2CRiskManager.sol#L86-L102)），须按资产规模与风险收益比权衡。测试 `BOND-19`：极大 stepBps → 返回 maxBondBps 不 panic。
 
 ---
 
