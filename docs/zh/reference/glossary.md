@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>📚 参考区 · 04 / 04 &nbsp; ● ● ● ●</sub>
+
 # 术语表
+
+<sub>降门槛名词速查。每条 1–2 句 + 指向对应深度篇。定义与各篇及代码口径统一。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：降门槛名词速查。每条 1–2 句 + 指向对应深度篇。定义与各篇及代码口径统一。
 > - **读者**：所有人。
 
 **分类**：[密码学与 zkTLS](#密码学与-zktls) · [协议核心机制](#协议核心机制) · [架构与信任](#架构与信任) · [业务与运维](#业务与运维)
@@ -120,8 +127,10 @@ VS 验证通过后向外部合规系统异步推送的精简报文（仅 Travel 
 
 ---
 
-<div align="center">
-
-🏠 [文档导航](../README.md) · 🗺 [源码地图](code-map.md) · 🧠 [深度轨](../deep-dive/01-overview.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="verifier-plugin.md"><b>03 · 验证器与插件</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%"></td>
+  </tr>
+</table>

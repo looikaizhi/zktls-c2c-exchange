@@ -1,8 +1,17 @@
-# Protocol & System Design ⭐
+<div align="center">
+
+<sub>🧠 Deep dive · 04 / 06 &nbsp; ● ● ● ● ○ ○</sub>
+
+# Protocol & System Design
+
+<sub>The main page on protocol and system design, including the two innovations. Understand this page and you understand the thesis work.</sub>
+
+<kbd>⭐ Core page</kbd>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: the main page on protocol and system design, including the two innovations. Understand this page and you understand the thesis work.
 > - **Audience**: deep-dive track.
 > - **Prerequisites/companions**: [01-overview.md](01-overview.md), [02-zktls-tlsnotary.md](02-zktls-tlsnotary.md); [reference/contracts.md](../reference/contracts.md), [reference/code-map.md](../reference/code-map.md).
 > - **Thesis source**: ch4.1–4.6. All facts follow the source.
@@ -173,8 +182,10 @@ Thesis ch4.6. Dual-channel archiving:
 
 ---
 
-<div align="center">
-
-◀ Prev [03 · Threat model](03-threat-model.md) · 🏠 [Docs home](../README.md) · Next ▶ [05 · Security analysis](05-security-analysis.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="03-threat-model.md"><b>03 · Threat model</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="05-security-analysis.md"><b>05 · Security analysis</b></a></td>
+  </tr>
+</table>

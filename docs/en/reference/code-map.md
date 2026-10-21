@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>📚 Reference · 01 / 04 &nbsp; ● ○ ○ ○</sub>
+
 # Source Map: Thesis ↔ Code
+
+<sub>Helps you "understand the thesis work directly through the source." It is the **skeleton** of the whole doc set — every other page references the package responsibilities and the "thesis concept ↔ source location" map here.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: helps you "understand the thesis work directly through the source." It is the **skeleton** of the whole doc set — every other page references the package responsibilities and the "thesis concept ↔ source location" map here.
 > - **Audience**: shared by both the hands-on and deep-dive tracks. Start with the [overview](#1-monorepo-overview) to build a mental map, then use the [mapping table](#3-thesis-concept--source-location-map) to navigate.
 > - All facts follow the actual source; code references are written as `file:line` and are clickable.
 
@@ -197,8 +204,10 @@ To understand the protocol fastest, read the source in this order:
 
 ---
 
-<div align="center">
-
-🏠 [Docs home](../README.md) · 🚀 [Quickstart](../hands-on/01-quickstart.md) · 🧠 [Deep-dive](../deep-dive/01-overview.md) · 📚 [Contracts](contracts.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%"></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="contracts.md"><b>02 · Contracts</b></a></td>
+  </tr>
+</table>

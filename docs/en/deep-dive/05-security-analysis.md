@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 Deep dive · 05 / 06 &nbsp; ● ● ● ● ● ○</sub>
+
 # Security Analysis
+
+<sub>Argue how the system achieves the five security goals S1–S5, and analyze economic security and the key trade-offs.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: argue how the system achieves the five security goals S1–S5, and analyze economic security and the key trade-offs.
 > - **Audience**: deep-dive track. Prerequisites: [03-threat-model.md](03-threat-model.md) (threats & trust assumptions T1–T5), [04-protocol-design.md](04-protocol-design.md) (mechanisms).
 > - **Thesis source**: ch4.7, ch4.8. All facts follow the source.
 
@@ -126,8 +133,10 @@ Two layers of economic constraint:
 
 ---
 
-<div align="center">
-
-◀ Prev [04 · Protocol design](04-protocol-design.md) · 🏠 [Docs home](../README.md) · Next ▶ [06 · Evaluation](06-evaluation.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="04-protocol-design.md"><b>04 · Protocol design</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="06-evaluation.md"><b>06 · Evaluation</b></a></td>
+  </tr>
+</table>

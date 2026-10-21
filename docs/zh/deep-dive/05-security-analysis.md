@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 深度轨 · 05 / 06 &nbsp; ● ● ● ● ● ○</sub>
+
 # 安全分析
+
+<sub>论证系统如何达成五项安全目标 S1–S5，并分析经济安全与关键权衡。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：论证系统如何达成五项安全目标 S1–S5，并分析经济安全与关键权衡。
 > - **读者**：深度轨。前置 [03-threat-model.md](03-threat-model.md)（威胁与信任假设 T1–T5）、[04-protocol-design.md](04-protocol-design.md)（机制）。
 > - **论文来源**：ch4.7、ch4.8。事实以源码为准。
 
@@ -126,8 +133,10 @@
 
 ---
 
-<div align="center">
-
-◀ 上一篇 [04 · 协议设计](04-protocol-design.md) · 🏠 [文档导航](../README.md) · 下一篇 ▶ [06 · 评估](06-evaluation.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="04-protocol-design.md"><b>04 · 协议设计</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="06-evaluation.md"><b>06 · 评估</b></a></td>
+  </tr>
+</table>

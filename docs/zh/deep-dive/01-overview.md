@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 深度轨 · 01 / 06 &nbsp; ● ○ ○ ○ ○ ○</sub>
+
 # 总览：协议全景
+
+<sub>深度轨总纲——一页看懂协议解决什么问题、怎么解决、创新在哪，并把你引向各深度篇。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：深度轨总纲——一页看懂协议解决什么问题、怎么解决、创新在哪，并把你引向各深度篇。
 > - **读者**：想读懂协议的同学。读完按「阅读地图」深入。
 > - **论文来源**：abstract、ch1.3、ch4.1。事实以源码为准。
 
@@ -122,8 +129,10 @@ flowchart TB
 
 ---
 
-<div align="center">
-
-🏠 [文档导航](../README.md) · 下一篇 ▶ [02 · zkTLS 与 TLSNotary](02-zktls-tlsnotary.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%"></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="02-zktls-tlsnotary.md"><b>02 · zkTLS 与 TLSNotary</b></a></td>
+  </tr>
+</table>

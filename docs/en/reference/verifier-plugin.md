@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>📚 Reference · 03 / 04 &nbsp; ● ● ● ○</sub>
+
 # Verifier & Plugins: Extensibility Reference
+
+<sub>The protocol's extensibility — how platform verifiers are abstracted, how Alipay/Wise are implemented, **how to add a 3rd payment platform**, the plugin SDK API, Webhook config.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: the protocol's extensibility — how platform verifiers are abstracted, how Alipay/Wise are implemented, **how to add a 3rd payment platform**, the plugin SDK API, Webhook config.
 > - **Audience**: advanced hands-on readers who want to extend the protocol. Prerequisites: [code-map.md](code-map.md), [contracts.md](contracts.md).
 > - All facts follow the source.
 
@@ -167,8 +174,10 @@ webhooks:
 
 ---
 
-<div align="center">
-
-🏠 [Docs home](../README.md) · 📚 [Contracts](contracts.md) · 🗺 [Source map](code-map.md) · 🧠 [Protocol design](../deep-dive/04-protocol-design.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="contracts.md"><b>02 · Contracts</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="glossary.md"><b>04 · Glossary</b></a></td>
+  </tr>
+</table>

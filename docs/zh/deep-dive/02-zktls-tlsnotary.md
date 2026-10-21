@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 深度轨 · 02 / 06 &nbsp; ● ● ○ ○ ○ ○</sub>
+
 # zkTLS 与 TLSNotary：密码学基石
+
+<sub>协议的密码学基石——为什么链下支付能被链上可信验证。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：协议的密码学基石——为什么链下支付能被链上可信验证。
 > - **读者**：深度轨。后接 [03-threat-model.md](03-threat-model.md)、[04-protocol-design.md](04-protocol-design.md)。
 > - **论文来源**：ch2.2–2.4。事实以源码为准。名词见 [glossary.md](../reference/glossary.md)。
 
@@ -110,8 +117,10 @@ $$m = \text{keccak256}(\text{chainId} ‖ \text{keccak256}(sid) ‖ H_{comm} ‖
 
 ---
 
-<div align="center">
-
-◀ 上一篇 [01 · 总览](01-overview.md) · 🏠 [文档导航](../README.md) · 下一篇 ▶ [03 · 威胁模型](03-threat-model.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="01-overview.md"><b>01 · 总览</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="03-threat-model.md"><b>03 · 威胁模型</b></a></td>
+  </tr>
+</table>

@@ -1,6 +1,11 @@
 <div align="center">
 
-# C2C zkTLS 协议文档 · 中文导航
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/brand/banner-dark.svg">
+  <img alt="C2C zkTLS Exchange Protocol：支付宝 / Wise → MPC-TLS 证明器 → 验证服务器 → 链上托管合约" src="../assets/brand/banner-light.svg" width="760">
+</picture>
+
+# 协议文档 · 中文导航
 
 **基于 zkTLS 的半去中心化 C2C 法币 ↔ 加密货币兑换协议**
 
@@ -39,33 +44,54 @@
 
 ## 🧭 选择你的路径
 
-### 🚀 动手轨（想跑起来）
-1. [快速上手](hands-on/01-quickstart.md) — 本地跑通最小闭环（零真实账号）
-2. [演示走查](hands-on/02-demo-walkthrough.md) — 真实环境完整换汇五步
-3. [排错速查](hands-on/03-troubleshooting.md) — 报错对照 + FAQ
+<table>
+  <tr>
+    <th width="33%">🚀 动手轨<br><sub>想跑起来</sub></th>
+    <th width="34%">🧠 深度轨<br><sub>想读懂协议</sub></th>
+    <th width="33%">📚 参考区<br><sub>边读边查</sub></th>
+  </tr>
+  <tr>
+    <td valign="top">
 
-### 🧠 深度轨（想读懂协议）
-1. [总览](deep-dive/01-overview.md) — 协议全景与阅读地图 ⭐入口
-2. [zkTLS 与 TLSNotary](deep-dive/02-zktls-tlsnotary.md) — 密码学基石
-3. [威胁模型](deep-dive/03-threat-model.md) — 为什么这样设计（T1–T5）
-4. [协议设计](deep-dive/04-protocol-design.md) — 系统设计与两大创新 ⭐
-5. [安全分析](deep-dive/05-security-analysis.md) — 安全目标 S1–S5 论证
-6. [评估](deep-dive/06-evaluation.md) — 实测 Gas / 时延数据
+1. [快速上手](hands-on/01-quickstart.md)<br><sub>本地跑通最小闭环，零真实账号</sub>
+2. [演示走查](hands-on/02-demo-walkthrough.md)<br><sub>真实环境完整换汇五步</sub>
+3. [排错速查](hands-on/03-troubleshooting.md)<br><sub>报错对照 + FAQ</sub>
 
-### 📚 共享参考区
-- [源码地图](reference/code-map.md) — 论文概念 ↔ 源码位置 ⭐桥梁
-- [合约速查](reference/contracts.md) — 接口/事件/权限/部署
-- [验证器与插件](reference/verifier-plugin.md) — 可扩展性、接入新平台
-- [术语表](reference/glossary.md) — 名词速查
+</td>
+    <td valign="top">
+
+1. [总览](deep-dive/01-overview.md) ⭐<br><sub>协议全景与阅读地图</sub>
+2. [zkTLS 与 TLSNotary](deep-dive/02-zktls-tlsnotary.md)<br><sub>密码学基石</sub>
+3. [威胁模型](deep-dive/03-threat-model.md)<br><sub>为什么这样设计（T1–T5）</sub>
+4. [协议设计](deep-dive/04-protocol-design.md) ⭐<br><sub>系统设计与两大创新</sub>
+5. [安全分析](deep-dive/05-security-analysis.md)<br><sub>安全目标 S1–S5 论证</sub>
+6. [评估](deep-dive/06-evaluation.md)<br><sub>实测 Gas / 时延数据</sub>
+
+</td>
+    <td valign="top">
+
+- [源码地图](reference/code-map.md) ⭐<br><sub>论文概念 ↔ 源码位置</sub>
+- [合约速查](reference/contracts.md)<br><sub>接口 / 事件 / 权限 / 部署</sub>
+- [验证器与插件](reference/verifier-plugin.md)<br><sub>可扩展性、接入新平台</sub>
+- [术语表](reference/glossary.md)<br><sub>名词速查</sub>
 - [论文信息](thesis.md) · [归属与许可](ATTRIBUTION.md)
+
+</td>
+  </tr>
+</table>
 
 ---
 
 ## 📊 关键数字
 
-- 单笔完整换汇链上成本 ≈ **\$0.13**（Arbitrum One 均值档）
-- 端到端时延：支付宝 5.94 s / Wise 9.74 s（理想）；17.44 s / 24.02 s（宽带）
-- 合约测试 **实跑 336 passing / 0 失败**（2026-06-02）
+<table>
+  <tr>
+    <td align="center" width="25%"><h3>≈ &#36;0.13</h3><sub>单笔完整换汇链上成本<br>Arbitrum One 均值档</sub></td>
+    <td align="center" width="25%"><h3>5.94 s</h3><sub>支付宝端到端（理想）<br>宽带 17.44 s</sub></td>
+    <td align="center" width="25%"><h3>9.74 s</h3><sub>Wise 端到端（理想）<br>宽带 24.02 s</sub></td>
+    <td align="center" width="25%"><h3>336 / 0</h3><sub>合约测试 通过 / 失败<br>实跑于 2026-06-02</sub></td>
+  </tr>
+</table>
 
 > [!IMPORTANT]
 > 数字复算过程见 [deep-dive/06-evaluation.md](deep-dive/06-evaluation.md)。

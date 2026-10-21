@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>📚 Reference · 04 / 04 &nbsp; ● ● ● ●</sub>
+
 # Glossary
+
+<sub>A low-barrier term lookup. Each entry is 1–2 sentences + a pointer to the relevant deep-dive page. Definitions are consistent with the other pages and the code.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: a low-barrier term lookup. Each entry is 1–2 sentences + a pointer to the relevant deep-dive page. Definitions are consistent with the other pages and the code.
 > - **Audience**: everyone.
 
 **Categories**: [Cryptography & zkTLS](#cryptography--zktls) · [Core protocol mechanisms](#core-protocol-mechanisms) · [Architecture & trust](#architecture--trust) · [Business & operations](#business--operations)
@@ -120,8 +127,10 @@ Rates are encoded `×1e8` (`RATE_PRECISION_EXP=8`); fiat amounts are passed at t
 
 ---
 
-<div align="center">
-
-🏠 [Docs home](../README.md) · 🗺 [Source map](code-map.md) · 🧠 [Deep-dive](../deep-dive/01-overview.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="verifier-plugin.md"><b>03 · Verifier & plugins</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%"></td>
+  </tr>
+</table>

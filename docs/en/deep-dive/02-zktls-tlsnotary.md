@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 Deep dive · 02 / 06 &nbsp; ● ● ○ ○ ○ ○</sub>
+
 # zkTLS & TLSNotary: the Cryptographic Foundation
+
+<sub>The protocol's cryptographic foundation — why an off-chain payment can be trustlessly verified on-chain.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: the protocol's cryptographic foundation — why an off-chain payment can be trustlessly verified on-chain.
 > - **Audience**: deep-dive track. Followed by [03-threat-model.md](03-threat-model.md), [04-protocol-design.md](04-protocol-design.md).
 > - **Thesis source**: ch2.2–2.4. All facts follow the source. Terms in [glossary.md](../reference/glossary.md).
 
@@ -110,8 +117,10 @@ On-demand disclosure is refined into a field-level declarative spec (Handlers); 
 
 ---
 
-<div align="center">
-
-◀ Prev [01 · Overview](01-overview.md) · 🏠 [Docs home](../README.md) · Next ▶ [03 · Threat model](03-threat-model.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="01-overview.md"><b>01 · Overview</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="03-threat-model.md"><b>03 · Threat model</b></a></td>
+  </tr>
+</table>

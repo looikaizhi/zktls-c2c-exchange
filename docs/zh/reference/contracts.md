@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>📚 参考区 · 02 / 04 &nbsp; ● ● ○ ○</sub>
+
 # 合约接口速查
+
+<sub>想读或改合约的同学的速查手册——依赖关系、各合约关键函数/事件/权限、订单状态机、部署顺序。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：想读或改合约的同学的速查手册——依赖关系、各合约关键函数/事件/权限、订单状态机、部署顺序。
 > - **读者**：开发者。先读 [code-map.md](code-map.md) 建立全局，再用本篇查接口。
 > - 合约源码在 [`tlsn-extension/packages/contracts/contracts/`](../../../tlsn-extension/packages/contracts/contracts/)，Solidity **0.8.28**、EVM cancun。所有事实以源码为准。
 
@@ -196,8 +203,10 @@ flowchart TB
 
 ---
 
-<div align="center">
-
-🏠 [文档导航](../README.md) · 📚 [源码地图](code-map.md) · 🔌 [验证器与插件](verifier-plugin.md) · 🧠 [协议设计](../deep-dive/04-protocol-design.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="code-map.md"><b>01 · 源码地图</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="verifier-plugin.md"><b>03 · 验证器与插件</b></a></td>
+  </tr>
+</table>

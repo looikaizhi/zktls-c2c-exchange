@@ -1,6 +1,11 @@
 <div align="center">
 
-# C2C zkTLS Protocol Docs · English Navigation
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/brand/banner-dark.svg">
+  <img alt="C2C zkTLS Exchange Protocol: Alipay / Wise → MPC-TLS prover → verifier server → on-chain escrow contract" src="../assets/brand/banner-light.svg" width="760">
+</picture>
+
+# Protocol Docs · English Navigation
 
 **A TLSNotary-based zkTLS semi-decentralized C2C fiat ↔ crypto exchange protocol**
 
@@ -39,33 +44,54 @@ This scheme is the only one of the mainstream routes that **achieves all three p
 
 ## 🧭 Choose your path
 
-### 🚀 Hands-on track (want to run it)
-1. [Quickstart](hands-on/01-quickstart.md) — run the minimal local loop (zero real accounts)
-2. [Demo walkthrough](hands-on/02-demo-walkthrough.md) — the five steps of a full real-environment exchange
-3. [Troubleshooting](hands-on/03-troubleshooting.md) — error reference + FAQ
+<table>
+  <tr>
+    <th width="33%">🚀 Hands-on<br><sub>want to run it</sub></th>
+    <th width="34%">🧠 Deep dive<br><sub>want to understand it</sub></th>
+    <th width="33%">📚 Reference<br><sub>look things up</sub></th>
+  </tr>
+  <tr>
+    <td valign="top">
 
-### 🧠 Deep-dive track (want to understand the protocol)
-1. [Overview](deep-dive/01-overview.md) — protocol panorama & reading map ⭐ entry
-2. [zkTLS & TLSNotary](deep-dive/02-zktls-tlsnotary.md) — the cryptographic foundation
-3. [Threat model](deep-dive/03-threat-model.md) — why it is designed this way (T1–T5)
-4. [Protocol design](deep-dive/04-protocol-design.md) — system design & the two innovations ⭐
-5. [Security analysis](deep-dive/05-security-analysis.md) — the S1–S5 security-goal argument
-6. [Evaluation](deep-dive/06-evaluation.md) — measured Gas / latency data
+1. [Quickstart](hands-on/01-quickstart.md)<br><sub>minimal local loop, zero real accounts</sub>
+2. [Demo walkthrough](hands-on/02-demo-walkthrough.md)<br><sub>five steps of a real exchange</sub>
+3. [Troubleshooting](hands-on/03-troubleshooting.md)<br><sub>error reference + FAQ</sub>
 
-### 📚 Shared reference
-- [Source map](reference/code-map.md) — thesis concept ↔ source location ⭐ bridge
-- [Contracts quick reference](reference/contracts.md) — interfaces/events/permissions/deployment
-- [Verifier & plugins](reference/verifier-plugin.md) — extensibility, adding a new platform
-- [Glossary](reference/glossary.md) — term lookup
-- [Thesis info](thesis.md) · [Attribution & license](ATTRIBUTION.md)
+</td>
+    <td valign="top">
+
+1. [Overview](deep-dive/01-overview.md) ⭐<br><sub>protocol panorama & reading map</sub>
+2. [zkTLS & TLSNotary](deep-dive/02-zktls-tlsnotary.md)<br><sub>the cryptographic foundation</sub>
+3. [Threat model](deep-dive/03-threat-model.md)<br><sub>why it is designed this way (T1–T5)</sub>
+4. [Protocol design](deep-dive/04-protocol-design.md) ⭐<br><sub>system design & two innovations</sub>
+5. [Security analysis](deep-dive/05-security-analysis.md)<br><sub>the S1–S5 security argument</sub>
+6. [Evaluation](deep-dive/06-evaluation.md)<br><sub>measured Gas / latency data</sub>
+
+</td>
+    <td valign="top">
+
+- [Source map](reference/code-map.md) ⭐<br><sub>thesis concept ↔ source location</sub>
+- [Contracts](reference/contracts.md)<br><sub>interfaces / events / permissions</sub>
+- [Verifier & plugins](reference/verifier-plugin.md)<br><sub>extensibility, new platforms</sub>
+- [Glossary](reference/glossary.md)<br><sub>term lookup</sub>
+- [Thesis info](thesis.md) · [Attribution](ATTRIBUTION.md)
+
+</td>
+  </tr>
+</table>
 
 ---
 
 ## 📊 Key numbers
 
-- On-chain cost of a complete exchange ≈ **\$0.13** (Arbitrum One, mean tier)
-- End-to-end latency: Alipay 5.94 s / Wise 9.74 s (ideal); 17.44 s / 24.02 s (broadband)
-- Contract tests **336 passing / 0 failing** (live run)
+<table>
+  <tr>
+    <td align="center" width="25%"><h3>≈ &#36;0.13</h3><sub>on-chain cost per exchange<br>Arbitrum One, mean tier</sub></td>
+    <td align="center" width="25%"><h3>5.94 s</h3><sub>Alipay end-to-end (ideal)<br>broadband 17.44 s</sub></td>
+    <td align="center" width="25%"><h3>9.74 s</h3><sub>Wise end-to-end (ideal)<br>broadband 24.02 s</sub></td>
+    <td align="center" width="25%"><h3>336 / 0</h3><sub>contract tests pass / fail<br>live run</sub></td>
+  </tr>
+</table>
 
 > [!IMPORTANT]
 > For the recomputation process, see [deep-dive/06-evaluation.md](deep-dive/06-evaluation.md).

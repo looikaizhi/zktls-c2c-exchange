@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🚀 动手轨 · 02 / 03 &nbsp; ● ● ○</sub>
+
 # 演示走查：完整换汇全流程
+
+<sub>跟作者真实环境走完一笔完整换汇，作参照（多数同学无法复现真实支付宝/Wise）。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：跟作者真实环境走完一笔完整换汇，作参照（多数同学无法复现真实支付宝/Wise）。
 > - **读者**：动手轨。
 > - **来源**：合约函数/事件（`packages/contracts`）+ 部署种子数据（[deploy-web.ts](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts)）。
 
@@ -102,8 +109,10 @@
 
 ---
 
-<div align="center">
-
-◀ 上一篇 [01 · 快速上手](01-quickstart.md) · 🏠 [文档导航](../README.md) · 下一篇 ▶ [03 · 排错速查](03-troubleshooting.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="01-quickstart.md"><b>01 · 快速上手</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="03-troubleshooting.md"><b>03 · 排错速查</b></a></td>
+  </tr>
+</table>

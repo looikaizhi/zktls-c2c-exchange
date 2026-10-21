@@ -1,4 +1,10 @@
+<div align="center">
+
+<sub>🙏 归属</sub>
+
 # 归属与许可
+
+</div>
 
 本仓库是基于 [tlsnotary/tlsn-extension](https://github.com/tlsnotary/tlsn-extension)（由 **TLSNotary / PSE 团队**及其贡献者创建）的**衍生作品**。
 
@@ -44,6 +50,6 @@ TLSNotary 扩展提供了**基于浏览器的 TLS 证明生成基础**——正�
 
 <div align="center">
 
-🏠 [文档导航](README.md) · 📄 [论文信息](thesis.md)
+<a href="README.md">🏠 文档导航</a>
 
 </div>

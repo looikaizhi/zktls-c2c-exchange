@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🚀 Hands-on · 03 / 03 &nbsp; ● ● ●</sub>
+
 # Troubleshooting Quick Reference
+
+<sub>Reduce friction — common errors, debugging tips, FAQ.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: reduce friction — common errors, debugging tips, FAQ.
 > - **Audience**: hands-on track.
 > - **Custom-error source**: [`C2CTypes.sol:108-194`](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L108-L194).
 
@@ -100,8 +107,10 @@ docker run -it --rm -p 55688:80 novnc/websockify 80 api.x.com:443
 
 ---
 
-<div align="center">
-
-◀ Prev [02 · Demo walkthrough](02-demo-walkthrough.md) · 🏠 [Docs home](../README.md) · 🧠 [Deep-dive](../deep-dive/01-overview.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="02-demo-walkthrough.md"><b>02 · Demo walkthrough</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%"></td>
+  </tr>
+</table>

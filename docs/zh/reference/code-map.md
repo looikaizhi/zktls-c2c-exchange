@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>📚 参考区 · 01 / 04 &nbsp; ● ○ ○ ○</sub>
+
 # 源码地图：论文 ↔ 代码对照
+
+<sub>让你「通过源码直接理解论文工作」。它是整套文档的**骨架**——其余各篇都引用这里的包职责划分与「论文概念↔源码位置」映射表。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：让你「通过源码直接理解论文工作」。它是整套文档的**骨架**——其余各篇都引用这里的包职责划分与「论文概念↔源码位置」映射表。
 > - **读者**：动手轨与深度轨共用。先看[总览](#1-monorepo-总览)建立心智地图，再用[映射大表](#3-论文概念--源码位置映射大表)按图索骥。
 > - 事实以**实际源码**为准。所有代码引用写 `文件:行号`，可点击跳转。
 
@@ -197,8 +204,10 @@ flowchart TB
 
 ---
 
-<div align="center">
-
-🏠 [文档导航](../README.md) · 🚀 [快速上手](../hands-on/01-quickstart.md) · 🧠 [深度轨](../deep-dive/01-overview.md) · 📚 [合约速查](contracts.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%"></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="contracts.md"><b>02 · 合约速查</b></a></td>
+  </tr>
+</table>

@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 深度轨 · 03 / 06 &nbsp; ● ● ● ○ ○ ○</sub>
+
 # 威胁模型与信任假设
+
+<sub>讲清"为什么这样设计"——攻击者能力、STRIDE 威胁分类、信任假设 T1–T5、半去中心化的定义与合理性。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：讲清"为什么这样设计"——攻击者能力、STRIDE 威胁分类、信任假设 T1–T5、半去中心化的定义与合理性。
 > - **读者**：深度轨。后接 [04-protocol-design.md](04-protocol-design.md)（机制）、[05-security-analysis.md](05-security-analysis.md)（S1–S5 论证）。
 > - **论文来源**：ch3.1、ch3.5、ch3.6。事实以源码为准。
 
@@ -113,8 +120,10 @@
 
 ---
 
-<div align="center">
-
-◀ 上一篇 [02 · zkTLS 与 TLSNotary](02-zktls-tlsnotary.md) · 🏠 [文档导航](../README.md) · 下一篇 ▶ [04 · 协议设计](04-protocol-design.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="02-zktls-tlsnotary.md"><b>02 · zkTLS 与 TLSNotary</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="04-protocol-design.md"><b>04 · 协议设计</b></a></td>
+  </tr>
+</table>

@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 Deep dive · 06 / 06 &nbsp; ● ● ● ● ● ●</sub>
+
 # Evaluation: Measured Data
+
+<sub>Convince with measured data — contract correctness, on-chain gas economics, TLSNotary performance, end-to-end latency.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: convince with measured data — contract correctness, on-chain gas economics, TLSNotary performance, end-to-end latency.
 > - **Audience**: deep-dive track / reviewers.
 > - **Data sources**: contract tests [`contracts/TEST_RESULT.md`](../../../tlsn-extension/packages/contracts/TEST_RESULT.md); experimental data [`data_analysis/`](../../../data_analysis/) (`*.csv` sources, `*.svg` charts).
 > - **Recomputation principle**: every number here is recomputed live from the source data (CSV / test output / contract constants).
@@ -171,8 +178,10 @@ The concurrent dual Prover shares a single Comlink Worker + a single Rayon WASM 
 
 ---
 
-<div align="center">
-
-◀ Prev [05 · Security analysis](05-security-analysis.md) · 🏠 [Docs home](../README.md) · 📚 [Source map](../reference/code-map.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="05-security-analysis.md"><b>05 · Security analysis</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%"></td>
+  </tr>
+</table>

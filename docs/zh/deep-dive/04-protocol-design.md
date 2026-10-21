@@ -1,8 +1,17 @@
-# 协议与系统设计 ⭐
+<div align="center">
+
+<sub>🧠 深度轨 · 04 / 06 &nbsp; ● ● ● ● ○ ○</sub>
+
+# 协议与系统设计
+
+<sub>协议与系统设计主篇，含两大创新。读懂这一篇就读懂了论文工作。</sub>
+
+<kbd>⭐ 核心篇</kbd>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：协议与系统设计主篇，含两大创新。读懂这一篇就读懂了论文工作。
 > - **读者**：深度轨。
 > - **前置/配套**：[01-overview.md](01-overview.md)、[02-zktls-tlsnotary.md](02-zktls-tlsnotary.md)；[reference/contracts.md](../reference/contracts.md)、[reference/code-map.md](../reference/code-map.md)。
 > - **论文来源**：ch4.1–4.6。事实以源码为准。
@@ -173,8 +182,10 @@ H_bind = keccak256(
 
 ---
 
-<div align="center">
-
-◀ 上一篇 [03 · 威胁模型](03-threat-model.md) · 🏠 [文档导航](../README.md) · 下一篇 ▶ [05 · 安全分析](05-security-analysis.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="03-threat-model.md"><b>03 · 威胁模型</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="05-security-analysis.md"><b>05 · 安全分析</b></a></td>
+  </tr>
+</table>

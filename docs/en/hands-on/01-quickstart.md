@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🚀 Hands-on · 01 / 03 &nbsp; ● ○ ○</sub>
+
 # Quickstart: Run the Minimal Local Loop
+
+<sub>Bring up a local chain + contracts + verifier server + extension + dApp on your machine, with zero real payment accounts.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: bring up a local chain + contracts + verifier server + extension + dApp on your machine, with zero real payment accounts.
 > - **Audience**: hands-on track.
 > - **Command sources**: [`tlsn-extension/README.md`](../../../tlsn-extension/README.md), [`packages/contracts/scripts/deploy-web.ts`](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts), the various `package.json`s.
 
@@ -130,8 +137,10 @@ A path you can verify without a real Alipay/Wise account:
 
 ---
 
-<div align="center">
-
-🏠 [Docs home](../README.md) · Next ▶ [02 · Demo walkthrough](02-demo-walkthrough.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%"></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="02-demo-walkthrough.md"><b>02 · Demo walkthrough</b></a></td>
+  </tr>
+</table>

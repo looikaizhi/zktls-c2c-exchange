@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🚀 动手轨 · 01 / 03 &nbsp; ● ○ ○</sub>
+
 # 快速上手：本地跑通最小闭环
+
+<sub>在本机跑起本地链 + 合约 + 验证服务器 + 扩展 + dApp，零真实支付账号。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：在本机跑起本地链 + 合约 + 验证服务器 + 扩展 + dApp，零真实支付账号。
 > - **读者**：动手轨。
 > - **命令来源**：[`tlsn-extension/README.md`](../../../tlsn-extension/README.md)、[`packages/contracts/scripts/deploy-web.ts`](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts)、各 `package.json`。
 
@@ -130,8 +137,10 @@ npm run dev          # = node scripts/start-dev.js，Next.js 默认端口 3001
 
 ---
 
-<div align="center">
-
-🏠 [文档导航](../README.md) · 下一篇 ▶ [02 · 演示走查](02-demo-walkthrough.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%"></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="02-demo-walkthrough.md"><b>02 · 演示走查</b></a></td>
+  </tr>
+</table>

@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>📚 Reference · 02 / 04 &nbsp; ● ● ○ ○</sub>
+
 # Contracts Quick Reference
+
+<sub>A cheat-sheet for anyone reading or modifying the contracts — dependencies, key functions/events/permissions per contract, the order state machine, deployment order.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: a cheat-sheet for anyone reading or modifying the contracts — dependencies, key functions/events/permissions per contract, the order state machine, deployment order.
 > - **Audience**: developers. Read [code-map.md](code-map.md) first for the big picture, then use this page to look up interfaces.
 > - Contract source is in [`tlsn-extension/packages/contracts/contracts/`](../../../tlsn-extension/packages/contracts/contracts/), Solidity **0.8.28**, EVM cancun. All facts follow the source.
 
@@ -198,8 +205,10 @@ Addresses are written to [`deployments/web-31337.json`](../../../tlsn-extension/
 
 ---
 
-<div align="center">
-
-🏠 [Docs home](../README.md) · 📚 [Source map](code-map.md) · 🔌 [Verifier & plugins](verifier-plugin.md) · 🧠 [Protocol design](../deep-dive/04-protocol-design.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="code-map.md"><b>01 · Source map</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="verifier-plugin.md"><b>03 · Verifier & plugins</b></a></td>
+  </tr>
+</table>

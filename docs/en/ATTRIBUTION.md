@@ -1,4 +1,10 @@
+<div align="center">
+
+<sub>🙏 Attribution</sub>
+
 # Attribution & License
+
+</div>
 
 This repository is a **derivative work** built on top of [tlsnotary/tlsn-extension](https://github.com/tlsnotary/tlsn-extension), created by the **TLSNotary / PSE team** and its contributors.
 
@@ -44,6 +50,6 @@ Thanks to the TLSNotary / PSE team (@0xtsukino, @hendrikeeckhaut, @mhchia, and t
 
 <div align="center">
 
-🏠 [Docs home](README.md) · 📄 [Thesis info](thesis.md)
+<a href="README.md">🏠 Docs home</a>
 
 </div>

@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🚀 Hands-on · 02 / 03 &nbsp; ● ● ○</sub>
+
 # Demo Walkthrough: the Full Exchange Flow
+
+<sub>Walk through one complete exchange in the author's real environment as a reference (most readers cannot reproduce a real Alipay/Wise payment).</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: walk through one complete exchange in the author's real environment as a reference (most readers cannot reproduce a real Alipay/Wise payment).
 > - **Audience**: hands-on track.
 > - **Sources**: contract functions/events (`packages/contracts`) + deployment seed data ([deploy-web.ts](../../../tlsn-extension/packages/contracts/scripts/deploy-web.ts)).
 
@@ -102,8 +109,10 @@ Internally: `verifyAndDelegate` (five-step cryptographic verification + delegate
 
 ---
 
-<div align="center">
-
-◀ Prev [01 · Quickstart](01-quickstart.md) · 🏠 [Docs home](../README.md) · Next ▶ [03 · Troubleshooting](03-troubleshooting.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="01-quickstart.md"><b>01 · Quickstart</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="03-troubleshooting.md"><b>03 · Troubleshooting</b></a></td>
+  </tr>
+</table>

@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>📚 参考区 · 03 / 04 &nbsp; ● ● ● ○</sub>
+
 # 验证器与插件：可扩展性参考
+
+<sub>协议的可扩展性——平台验证器如何抽象、支付宝/Wise 怎么实现、**如何接入第 3 个支付平台**、插件 SDK API、Webhook 配置。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：协议的可扩展性——平台验证器如何抽象、支付宝/Wise 怎么实现、**如何接入第 3 个支付平台**、插件 SDK API、Webhook 配置。
 > - **读者**：想扩展协议的进阶动手同学。前置阅读 [code-map.md](code-map.md)、[contracts.md](contracts.md)。
 > - 事实以源码为准。
 
@@ -167,8 +174,10 @@ webhooks:
 
 ---
 
-<div align="center">
-
-🏠 [文档导航](../README.md) · 📚 [合约速查](contracts.md) · 🗺 [源码地图](code-map.md) · 🧠 [协议设计](../deep-dive/04-protocol-design.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="contracts.md"><b>02 · 合约速查</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%" align="right"><sub>下一篇 ▶</sub><br><a href="glossary.md"><b>04 · 术语表</b></a></td>
+  </tr>
+</table>

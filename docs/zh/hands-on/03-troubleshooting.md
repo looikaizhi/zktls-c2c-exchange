@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🚀 动手轨 · 03 / 03 &nbsp; ● ● ●</sub>
+
 # 排错速查
+
+<sub>降低劝退——常见报错、调试技巧、FAQ。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：降低劝退——常见报错、调试技巧、FAQ。
 > - **读者**：动手轨。
 > - **自定义错误源**：[`C2CTypes.sol:108-194`](../../../tlsn-extension/packages/contracts/contracts/C2CTypes.sol#L108-L194)。
 
@@ -100,8 +107,10 @@ docker run -it --rm -p 55688:80 novnc/websockify 80 api.x.com:443
 
 ---
 
-<div align="center">
-
-◀ 上一篇 [02 · 演示走查](02-demo-walkthrough.md) · 🏠 [文档导航](../README.md) · 🧠 [深度轨](../deep-dive/01-overview.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="02-demo-walkthrough.md"><b>02 · 演示走查</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%"></td>
+  </tr>
+</table>

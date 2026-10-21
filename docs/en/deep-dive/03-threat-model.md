@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 Deep dive · 03 / 06 &nbsp; ● ● ● ○ ○ ○</sub>
+
 # Threat Model & Trust Assumptions
+
+<sub>Explains "why it is designed this way" — adversary capabilities, STRIDE threat classification, trust assumptions T1–T5, and the definition & rationale of semi-decentralization.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: explains "why it is designed this way" — adversary capabilities, STRIDE threat classification, trust assumptions T1–T5, and the definition & rationale of semi-decentralization.
 > - **Audience**: deep-dive track. Followed by [04-protocol-design.md](04-protocol-design.md) (mechanisms), [05-security-analysis.md](05-security-analysis.md) (S1–S5 argument).
 > - **Thesis source**: ch3.1, ch3.5, ch3.6. All facts follow the source.
 
@@ -113,8 +120,10 @@ Under the constraint that pure-decentralized zkTLS latency is not yet practical,
 
 ---
 
-<div align="center">
-
-◀ Prev [02 · zkTLS & TLSNotary](02-zktls-tlsnotary.md) · 🏠 [Docs home](../README.md) · Next ▶ [04 · Protocol design](04-protocol-design.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ Previous</sub><br><a href="02-zktls-tlsnotary.md"><b>02 · zkTLS & TLSNotary</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="04-protocol-design.md"><b>04 · Protocol design</b></a></td>
+  </tr>
+</table>

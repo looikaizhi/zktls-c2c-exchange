@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 深度轨 · 06 / 06 &nbsp; ● ● ● ● ● ●</sub>
+
 # 评估：实测数据
+
+<sub>用实测数据说服人——合约正确性、链上 Gas 经济性、TLSNotary 性能、端到端时延。</sub>
+
+</div>
 
 > [!NOTE]
 > **本篇导读**
-> - **定位**：用实测数据说服人——合约正确性、链上 Gas 经济性、TLSNotary 性能、端到端时延。
 > - **读者**：深度轨 / 评审。
 > - **数据来源**：合约测试 [`contracts/TEST_RESULT.md`](../../../tlsn-extension/packages/contracts/TEST_RESULT.md)；实验数据 [`data_analysis/`](../../../data_analysis/)（`*.csv` 源、`*.svg` 图）。
 > - **复算原则**：本篇所有数值均回源数据（CSV / 测试输出 / 合约常量）现场复算。
@@ -171,8 +178,10 @@ $$\text{总手续费(USD)} = \text{Gas Used} \times \text{Gas Price(gwei)} \time
 
 ---
 
-<div align="center">
-
-◀ 上一篇 [05 · 安全分析](05-security-analysis.md) · 🏠 [文档导航](../README.md) · 📚 [源码地图](../reference/code-map.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="left"><sub>◀ 上一篇</sub><br><a href="05-security-analysis.md"><b>05 · 安全分析</b></a></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 文档导航</a></td>
+    <td width="33%"></td>
+  </tr>
+</table>

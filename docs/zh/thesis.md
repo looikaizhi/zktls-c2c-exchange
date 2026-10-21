@@ -1,4 +1,10 @@
+<div align="center">
+
+<sub>📄 论文</sub>
+
 # 论文信息
+
+</div>
 
 本文档是下述硕士学位论文的配套开源实现。
 
@@ -8,7 +14,7 @@
 |---|---|
 | 中文标题 | 基于 zkTLS 的半去中心化的 C2C 兑换协议设计与实现 |
 | 英文标题 | Design and Implementation of a Semi-Decentralized C2C Exchange Protocol Based on zkTLS |
-| 作者 | 雷凯智（LOOI KAI ZHI），学号 3820241067 |
+| 作者 | 雷凯智（LOOI KAI ZHI） |
 | 指导教师 | 车海莺 副教授（Prof. HaiYing Che） |
 | 答辩委员会主席 | 周天飞 教授 |
 | 学院 | 北京理工大学 计算机学院（School of Computer Science and Technology） |
@@ -68,6 +74,6 @@
 
 <div align="center">
 
-🏠 [文档导航](README.md) · 🧠 [深度轨总览](deep-dive/01-overview.md) · 🙏 [归属与许可](ATTRIBUTION.md)
+<a href="README.md">🏠 文档导航</a>
 
 </div>

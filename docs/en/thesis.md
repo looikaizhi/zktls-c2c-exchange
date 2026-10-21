@@ -1,4 +1,10 @@
+<div align="center">
+
+<sub>📄 Thesis</sub>
+
 # Thesis Information
+
+</div>
 
 This documentation is the companion open-source implementation of the master's thesis below.
 
@@ -8,7 +14,7 @@ This documentation is the companion open-source implementation of the master's t
 |---|---|
 | Title (EN) | Design and Implementation of a Semi-Decentralized C2C Exchange Protocol Based on zkTLS |
 | Title (ZH) | 基于 zkTLS 的半去中心化的 C2C 兑换协议设计与实现 |
-| Author | LOOI KAI ZHI (雷凯智), student ID 3820241067 |
+| Author | LOOI KAI ZHI (雷凯智) |
 | Supervisor | Associate Prof. HaiYing Che (车海莺 副教授) |
 | Defense committee chair | Prof. Tianfei Zhou (周天飞 教授) |
 | School | School of Computer Science and Technology, Beijing Institute of Technology (北京理工大学 计算机学院) |
@@ -66,6 +72,6 @@ See the [mapping table in the English README](README.md#thesis-chapter--document
 
 <div align="center">
 
-🏠 [Docs home](README.md) · 🧠 [Deep-dive overview](deep-dive/01-overview.md) · 🙏 [Attribution & license](ATTRIBUTION.md)
+<a href="README.md">🏠 Docs home</a>
 
 </div>

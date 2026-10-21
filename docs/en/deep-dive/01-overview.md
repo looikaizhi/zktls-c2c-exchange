@@ -1,8 +1,15 @@
+<div align="center">
+
+<sub>🧠 Deep dive · 01 / 06 &nbsp; ● ○ ○ ○ ○ ○</sub>
+
 # Overview: the Protocol at a Glance
+
+<sub>The deep-dive entry point — one page on what problem the protocol solves, how, where the innovations are, and where to go next.</sub>
+
+</div>
 
 > [!NOTE]
 > **Reading guide**
-> - **Purpose**: the deep-dive entry point — one page on what problem the protocol solves, how, where the innovations are, and where to go next.
 > - **Audience**: readers who want to understand the protocol. After this, follow the "reading map" to go deeper.
 > - **Thesis source**: abstract, ch1.3, ch4.1. All facts follow the source.
 
@@ -121,8 +128,10 @@ flowchart TB
 
 ---
 
-<div align="center">
-
-🏠 [Docs home](../README.md) · Next ▶ [02 · zkTLS & TLSNotary](02-zktls-tlsnotary.md)
-
-</div>
+<table>
+  <tr>
+    <td width="33%"></td>
+    <td width="34%" align="center"><a href="../README.md">🏠 Docs home</a></td>
+    <td width="33%" align="right"><sub>Next ▶</sub><br><a href="02-zktls-tlsnotary.md"><b>02 · zkTLS & TLSNotary</b></a></td>
+  </tr>
+</table>
