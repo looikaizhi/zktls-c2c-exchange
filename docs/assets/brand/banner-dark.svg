@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="240" viewBox="0 0 960 240" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif">
+  <rect width="960" height="240" rx="16" fill="#161b22"/>
+  <text x="480" y="66" text-anchor="middle" font-size="34" font-weight="700" fill="#e6edf3">C2C zkTLS Exchange Protocol</text>
+  <text x="480" y="98" text-anchor="middle" font-size="16" fill="#9198a1">Off-chain fiat payments → on-chain verifiable proofs</text>
+  <g font-size="14" font-weight="600" text-anchor="middle" fill="#e6edf3">
+    <rect x="40"  y="140" width="180" height="56" rx="10" fill="#0d1117" stroke="#3d444d"/>
+    <text x="130" y="164">Alipay / Wise</text><text x="130" y="184" font-weight="400" font-size="12" fill="#9198a1">HTTPS payment</text>
+    <rect x="280" y="140" width="180" height="56" rx="10" fill="#0d1117" stroke="#3d444d"/>
+    <text x="370" y="164">MPC-TLS Prover</text><text x="370" y="184" font-weight="400" font-size="12" fill="#9198a1">browser extension</text>
+    <rect x="520" y="140" width="180" height="56" rx="10" fill="#0d1117" stroke="#3d444d"/>
+    <text x="610" y="164">Verifier Server</text><text x="610" y="184" font-weight="400" font-size="12" fill="#9198a1">verify + sign</text>
+    <rect x="760" y="140" width="160" height="56" rx="10" fill="#a371f7" fill-opacity="0.14" stroke="#a371f7"/>
+    <text x="840" y="164" fill="#a371f7">Escrow Contract</text><text x="840" y="184" font-weight="400" font-size="12" fill="#9198a1">release USDT/USDC</text>
+  </g>
+  <g stroke="#a371f7" stroke-width="2" fill="none">
+    <path d="M222 168 H272"/><path d="M462 168 H512"/><path d="M702 168 H752"/>
+  </g>
+  <g fill="#a371f7"><path d="M272 163 l8 5 -8 5z"/><path d="M512 163 l8 5 -8 5z"/><path d="M752 163 l8 5 -8 5z"/></g>
+</svg>
